@@ -62,6 +62,10 @@ Structure for guides:
 └── ...
 ```
 
+## API data
+
+The file `api-respond.json` is located in the root folder. It is an example of an API respond by the [OpenSpaceData API](https://github.com/OpenSpaceData/api.openspacedata.org).
+
 ## Funding
 
 This project is funded by the [German Federal Ministry of Education and Research](http://bmbf.de)
