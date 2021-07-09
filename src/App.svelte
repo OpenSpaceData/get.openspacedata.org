@@ -71,6 +71,26 @@
     box-sizing: border-box;
   }
 
+  :global(h1),
+  :global(h2),
+  :global(h3),
+  :global(h4),
+  :global(h5),
+  :global(h6) {
+    font-family: "nowaybold", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  :global(h1) {
+    font-size: 300%;
+    line-height: 130%;
+  }
+
+  :global(h3) {
+    font-size: 150%;
+    line-height: 130%;
+    margin-bottom: 0rem;
+  }
+
   .wrapper {
     max-width: 940px;
     margin: 0 auto;
@@ -92,5 +112,9 @@
   :global(.content a) {
     text-decoration: none;
     color: #000;
+  }
+
+  :global(strong) {
+    font-family: "nowaybold";
   }
 </style>

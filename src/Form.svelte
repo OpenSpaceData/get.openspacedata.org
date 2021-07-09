@@ -6,7 +6,7 @@
   import TimeRange from "./TimeRange.svelte";
 
   let choice = { category: true };
-  let form = { display: true };
+  let form = { display: false };
 
   export function parentToggle() {
     choice.category = !choice.category;
@@ -76,23 +76,9 @@
       <div class="question-body">
         <div class="content">
           <p>
-            In the next 20-30 minutes we will analyze the green vegetation on a
-            satellite image showing the region you have chosen. For this we will
-            use a scientific indicator - the Normalized Difference Vegetation
-            Index. Or NDVI for short. Don't worry, it sounds more complicated
-            than it is. We will guide you step-by-step through this process.
+            Here comes the content from <em>introduction.md</em> in the
+            <em>guides</em> directory.
           </p>
-          <p>
-            At the end you will get a picture where healthy vegetation is
-            colored green and unhealthy vegetation, i.e. vegetation with low or
-            no chlorophyll content, is colored orange or red. This gives you a
-            quick overview of the state of the vegetation in your study area.
-          </p>
-          <p>
-            Don't worry, if you get stuck, just use our forum. We and other
-            users are happy to help you.
-          </p>
-          <p>Sounds good? Then go ahead...</p>
         </div>
       </div>
       <div class="question-head">
@@ -102,7 +88,54 @@
         <div class="question-title">Download your satellite imagery</div>
       </div>
       <div class="question-body">
-        <div class="content">XXX</div>
+        <div class="content">
+          <p>
+            First, you have to download the imagery directly from the European
+            Space Agency. Sounds really exciting, right? But no problem for you:
+            You just have to click the download buttons: 👇
+          </p>
+          <ul class="downloads">
+            <li>
+              <button>Download file S2A_33TUK_20210410_0_L2A/B02.tif</button>
+            </li>
+            <li>
+              <button>Download file S2A_33TUK_20210410_0_L2A/B03.tif</button>
+            </li>
+            <li>
+              <button>Download file S2A_33TUK_20210410_0_L2A/B04.tif</button>
+            </li>
+          </ul>
+          <h3>Why I have to download multiple files?</h3>
+          <p>Good question! Here comes the answer. Lorem ipsum...</p>
+        </div>
+      </div>
+      <div class="question-head">
+        <div class="question-nr">
+          <span>2</span>
+        </div>
+        <div class="question-title">Process the image</div>
+      </div>
+      <div class="question-body">
+        <div class="content">
+          <p>
+            Here comes the content from <em>process.md</em> in the
+            <em>guides</em> directory.
+          </p>
+        </div>
+      </div>
+      <div class="question-head">
+        <div class="question-nr">
+          <span>3</span>
+        </div>
+        <div class="question-title">Interpret the data right</div>
+      </div>
+      <div class="question-body">
+        <div class="content">
+          <p>
+            Here comes the content from <em>interpret.md</em> in the
+            <em>guides</em> directory.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -193,15 +226,18 @@
   /**** GUIDE ****/
   /***************/
 
-  h1 {
-    font-size: 300%;
-    font-family: "nowaybold", -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 130%;
-  }
-
   .guide p {
     font-family: "nowayregular", -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 120%;
     line-height: 150%;
+  }
+
+  ul.downloads {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.downloads button {
+    margin: 0.5rem 0 0.5rem 0;
   }
 </style>
