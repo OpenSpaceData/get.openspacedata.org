@@ -48,17 +48,18 @@ The guides are the content which guides the users through the process for downlo
 Structure for guides:
 
 ```js
-/
-/guides
-    /example-guide-1 // e.g. 'green-vegetation-health'
-        /introduction.md // Introduction into the topic and the upcoming work
-        /process.md // Step-by-step guide to process and editing the data
-        /interpret.md // Guide to interpret the data right and further resources to the topic
-    /example-guide-2 
-        /introduction.md
-        /process.md
-        /interpret.md
-    ...
+.
+├──guides
+│  ├──example-guide-1 // e.g. 'green-vegetation-health'
+│  │  ├──introduction.md // Introduction into the topic and the upcoming work
+│  │  ├──process.md // Step-by-step guide to process and editing the data
+│  │  └──interpret.md // Guide to interpret the data right and further resources to the topic
+│  ├──example-guide-2 
+│  │  ├──introduction.md
+│  │  ├──process.md
+│  │  └──interpret.md
+│  └──...
+└── ...
 ```
 
 ## Funding
