@@ -4,6 +4,10 @@ This svelte app provide the frontend UI for OpenSpaceData. It provides the reque
 
 More information about the idea of OpenSpaceData you can read here:  *[Interview: OpenSpaceData Wants to Democratise Access to Satellite Data](https://en.reset.org/blog/interview-openspacedata-wants-democratise-access-satellite-data-05252021)*
 
+## Prototype
+
+There is a clickable wireframe that shows the functionality and output of the frontend. Try it out: https://www.figma.com/proto/KovwIzegMALA6qJjGabT7D/%5BOSD%5D-Wireframe-Frontend?node-id=111%3A10&scaling=min-zoom
+
 ## Run Locally
 
 Clone the project:
