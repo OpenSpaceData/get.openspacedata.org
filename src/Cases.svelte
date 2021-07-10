@@ -1,13 +1,46 @@
 <script>
+  import {task} from './store'
   import {cases as choices} from './data/cases'
-  console.log(choices)
+
+  let selected
 
   const capitalize = str => {
     return str.charAt(0).toUpperCase() + str.slice(1)
   }
 
-  let selected
+  const setTask = option => {
+    task.set(option)
+  }
 </script>
+
+<div class="container">
+  <div class="content">
+    {#each choices as choice}
+      <p>{choice.intro}</p>
+      <ul class="indices">
+        {#each choice.options as option, index}
+          <li class="shadow" class:selected={selected === index}>
+            <div class="task">
+              <h2>{option.heading}</h2>
+              <span>Difficulty: {capitalize(option.difficulty)}</span>
+            </div>
+            <button class="help">?</button>
+            {#if !(selected === index)}
+              <button
+                id={index}
+                class="take-indice"
+                on:click={() => {
+                  selected = index
+                  setTask(option)
+                }}>Take this</button>
+            {/if}
+          </li>
+        {/each}
+      </ul>
+    {/each}
+  </div>
+  <pre />
+</div>
 
 <style>
   ul.indices {
@@ -80,26 +113,3 @@
     transition: all 0.3s;
   }
 </style>
-
-<div class="container">
-  <div class="content">
-    {#each choices as choice}
-      <p>{choice.intro}</p>
-      <ul class="indices">
-        {#each choice.options as option, index}
-          <li class="shadow" class:selected={selected === index}>
-            <div class="task">
-              <h2>{option.heading}</h2>
-              <span>Difficulty: {capitalize(option.difficulty)}</span>
-            </div>
-            <button class="help">?</button>
-            {#if !(selected === index)}
-              <button id={index} class="take-indice" on:click={() => (selected = index)}
-                >Take this</button>
-            {/if}
-          </li>
-        {/each}
-      </ul>
-    {/each}
-  </div>
-</div>
