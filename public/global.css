@@ -1,3 +1,13 @@
+:root {
+	--color-black: #000;
+	--color-white: #fff;
+
+	--color-dark-grey: #474A57;
+
+	--color-primary-action: #1947E5;
+	--color-secondary-action: #FFBD12;
+}
+
 html, body {
 	position: relative;
 	width: 100%;
