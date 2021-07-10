@@ -21,7 +21,6 @@
         value="range" />Let me set the time range myself
     </label>
   </div>
-  {JSON.stringify($range)}
   {#if $range.type === 'range'}
     <!-- content here -->
     <div class="content horizontal">
