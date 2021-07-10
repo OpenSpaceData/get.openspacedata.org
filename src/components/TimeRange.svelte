@@ -10,7 +10,7 @@
         type="radio"
         name="timeRange"
         value="all"
-        on:click={() => ($range = {...$range, type: 'all'})} />Gimme the latest imagery with best
+        on:click={() => ($range = {...$range, type: 'latest'})} />Gimme the latest imagery with best
       quality
     </label>
     <label>

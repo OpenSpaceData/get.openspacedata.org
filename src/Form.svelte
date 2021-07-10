@@ -14,10 +14,17 @@
     choice.category = !choice.category
   }
 
-  range.set(true)
   let disableButton = true
-
-  $: disableButton = $selected && $location && $range ? false : true
+  $: if ($selected && $location && $range.type === 'latest') {
+    disableButton = false
+  }
+  $: if ($selected && $location && $range.type === 'range') {
+    if (!$range.startDate || !$range.endDate) {
+      disableButton = true
+    } else {
+      disableButton = false
+    }
+  }
 </script>
 
 {#if form.display}
