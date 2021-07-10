@@ -7,12 +7,12 @@ export const vegetation = {
                 difficulty: 'easy',
             },
             {
-                heading: 'Visualizing Barren Soil',
-                difficulty: 'easy',
+                heading: 'Analyzing Green Vegetation Health',
+                difficulty: 'easy to moderate',
             },
             {
-                heading: 'Visualizing Barren Soil',
-                difficulty: 'hard',
+                heading: 'Analyzing Land Cover',
+                difficulty: 'easy',
             },
         ]
     }
