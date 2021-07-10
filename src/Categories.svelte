@@ -1,27 +1,8 @@
 <script>
-  export let toggle = () => {};
-</script>
+  import {categories} from './data/categories'
 
-<div class="categories">
-  <button id="vegetation" on:click={toggle}>
-    <span>Analyse vegetation and forestry</span>
-  </button>
-  <button id="floods" on:click={toggle}>
-    <span>Study floods and droughts</span>
-  </button>
-  <button id="wildfire" on:click={toggle}>
-    <span>Investigate wildfires</span>
-  </button>
-  <button id="water" on:click={toggle}>
-    <span>Inspect ocean and water bodies</span>
-  </button>
-  <button id="urban" on:click={toggle}>
-    <span>Check urban development</span>
-  </button>
-  <button id="snow" on:click={toggle}>
-    <span>Examine snow and glacier</span>
-  </button>
-</div>
+  export let toggle = () => {}
+</script>
 
 <style>
   div.categories {
@@ -55,8 +36,8 @@
     box-shadow: rgba(0, 0, 0, 0.5) 0 0 30px;
   }
 
-  button span {
-    font-family: "nowaymedium", -apple-system, BlinkMacSystemFont, sans-serif;
+  button {
+    font-family: 'nowaymedium', -apple-system, BlinkMacSystemFont, sans-serif;
     bottom: 0;
     font-size: 1.4rem;
     line-height: 1.6rem;
@@ -66,51 +47,35 @@
   }
 
   #vegetation {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.7)
-      ),
-      url("./assets/img/forest.jpg");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
+      url('./assets/img/forest.jpg');
   }
   #floods {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.7)
-      ),
-      url("./assets/img/earth.jpg");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
+      url('./assets/img/earth.jpg');
   }
   #wildfire {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.7)
-      ),
-      url("./assets/img/wildfire.jpg");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
+      url('./assets/img/wildfire.jpg');
   }
   #water {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.7)
-      ),
-      url("./assets/img/wave.jpg");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
+      url('./assets/img/wave.jpg');
   }
   #urban {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.7)
-      ),
-      url("./assets/img/city.jpg");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
+      url('./assets/img/city.jpg');
   }
   #snow {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.7)
-      ),
-      url("./assets/img/iceland.jpg");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
+      url('./assets/img/iceland.jpg');
   }
 </style>
+
+<div class="categories">
+  {#each categories as category}
+    <button id={category.id} on:click={toggle}>
+      {category.text}
+    </button>
+  {/each}
+</div>
