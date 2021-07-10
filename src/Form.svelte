@@ -1,9 +1,9 @@
 <script>
   import {fade} from 'svelte/transition'
   import Categories from './Categories.svelte'
-  import BackToCategories from './BackToCategories.svelte'
+  import BackToCategories from './components/BackToCategories.svelte'
   import Cases from './Cases.svelte'
-  import LocationSearch from './LocationSearch.svelte'
+  import LocationSearch from './components/LocationSearch.svelte'
   import TimeRange from './TimeRange.svelte'
 
   let choice = {category: true}
