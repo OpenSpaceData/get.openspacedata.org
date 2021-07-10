@@ -13,7 +13,7 @@
         "tabWidth": 2,
         "arrowParens": "avoid",
         "semi": false,
-        "bracketSpacing": false
+        "bracketSpacing": false,
       }
     ]
   },

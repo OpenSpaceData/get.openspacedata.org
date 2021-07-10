@@ -4,10 +4,13 @@
   "printWidth": 100,
   "bracketSpacing": false,
   "singleQuote": true,
-  "trailingComma": "none",
-  "svelteSortOrder": "scripts-styles-markup",
+  "trailingComma": "es5",
+  "svelteSortOrder": "options-scripts-markup-styles",
   "svelteStrictMode": false,
   "svelteBracketNewLine": false,
   "svelteAllowShorthand": true,
-  "svelteIndentScriptAndStyle": true
+  "svelteIndentScriptAndStyle": true,
+  "plugins": [
+    "prettier-plugin-svelte"
+  ]
 }
