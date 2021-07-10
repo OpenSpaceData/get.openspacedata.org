@@ -1,14 +1,6 @@
 <script>
-  export let toggle = () => {};
+  export let toggle = () => {}
 </script>
-
-<div class="container backToCategories">
-  <div class="content">
-    <button on:click={toggle}>
-      <span>←</span> Go back to categories
-    </button>
-  </div>
-</div>
 
 <style>
   button {
@@ -28,3 +20,11 @@
     box-shadow: #000 1px 2px 0;
   }
 </style>
+
+<div class="container backToCategories">
+  <div class="content">
+    <button on:click={toggle}>
+      <span>←</span> Go back to categories
+    </button>
+  </div>
+</div>

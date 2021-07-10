@@ -1,39 +1,11 @@
 <script>
-</script>
+  import {cases as choices} from './data/cases'
+  console.log(choices)
 
-<div class="container">
-  <div class="content">
-    <p>
-      Choose one of the following options to analyze vegetation and forestry:
-    </p>
-    <ul class="indices">
-      <li class="shadow">
-        <div class="task">
-          <h2>Visualizing Barren Soil</h2>
-          <span>Difficulty: Easy</span>
-        </div>
-        <button class="help">?</button>
-        <button class="take-indice">Take this</button>
-      </li>
-      <li class="shadow">
-        <div class="task">
-          <h2>Visualizing Barren Soil</h2>
-          <span>Difficulty: Easy</span>
-        </div>
-        <button class="help">?</button>
-        <button class="take-indice">Take this</button>
-      </li>
-      <li class="shadow">
-        <div class="task">
-          <h2>Visualizing Barren Soil</h2>
-          <span>Difficulty: Easy</span>
-        </div>
-        <button class="help">?</button>
-        <button class="take-indice">Take this</button>
-      </li>
-    </ul>
-  </div>
-</div>
+  const capitalize = str => {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  }
+</script>
 
 <style>
   ul.indices {
@@ -61,7 +33,7 @@
 
   h2 {
     margin: 0;
-    font-family: "nowaymedium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'nowaymedium', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   button {
@@ -76,14 +48,34 @@
     background: #ffbd12;
     padding: 10px 12px;
     margin-left: 20px;
-    font-family: "nowayregular", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'nowayregular', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   button.help {
     border-radius: 100%;
     width: 43px;
     height: 43px;
-    font-family: "nowaybold", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'nowaybold', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 120%;
   }
 </style>
+
+<div class="container">
+  <div class="content">
+    {#each choices as choice}
+      <p>{choice.intro}</p>
+      <ul class="indices">
+        {#each choice.options as option}
+          <li class="shadow">
+            <div class="task">
+              <h2>{option.heading}</h2>
+              <span>Difficulty: {capitalize(option.difficulty)}</span>
+            </div>
+            <button class="help">?</button>
+            <button class="take-indice">Take this</button>
+          </li>
+        {/each}
+      </ul>
+    {/each}
+  </div>
+</div>
