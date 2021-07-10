@@ -1,6 +1,6 @@
 <script>
   import {fade} from 'svelte/transition'
-  import {choice as selected, location} from './store'
+  import {choice as selected, location, range} from './store'
   import Categories from './Categories.svelte'
   import BackToCategories from './components/BackToCategories.svelte'
   import Cases from './Cases.svelte'
@@ -13,6 +13,11 @@
   export function parentToggle() {
     choice.category = !choice.category
   }
+
+  range.set(true)
+  let disableButton = true
+
+  $: disableButton = $selected && $location && $range ? false : true
 </script>
 
 {#if form.display}
@@ -66,7 +71,7 @@
             <TimeRange />
             <div class="container">
               <div class="content">
-                <button>Alright! Get the data and start analyzing</button>
+                <button disabled={disableButton}>Alright! Get the data and start analyzing</button>
               </div>
             </div>
           </div>
@@ -234,6 +239,11 @@
     box-shadow: #000 1px 2px 0;
     border: none;
     border-bottom: 2px solid #000;
+  }
+
+  :global(button[disabled]) {
+    background: var(--color-dark-grey) !important;
+    color: var(--color-white) !important;
   }
 
   /***************/
