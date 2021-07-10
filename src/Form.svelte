@@ -5,7 +5,7 @@
   import BackToCategories from './components/BackToCategories.svelte'
   import Cases from './Cases.svelte'
   import LocationSearch from './components/LocationSearch.svelte'
-  import TimeRange from './TimeRange.svelte'
+  import TimeRange from './components/TimeRange.svelte'
 
   let choice = {category: true}
   let form = {display: true}
@@ -239,11 +239,13 @@
     box-shadow: #000 1px 2px 0;
     border: none;
     border-bottom: 2px solid #000;
+    cursor: pointer;
   }
 
   :global(button[disabled]) {
     background: var(--color-dark-grey) !important;
     color: var(--color-white) !important;
+    cursor: default !important;
   }
 
   /***************/
