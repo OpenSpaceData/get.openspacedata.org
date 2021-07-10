@@ -1,6 +1,6 @@
 <script>
   import {fade} from 'svelte/transition'
-  import {choice as selected} from './store'
+  import {choice as selected, location} from './store'
   import Categories from './Categories.svelte'
   import BackToCategories from './components/BackToCategories.svelte'
   import Cases from './Cases.svelte'
@@ -59,15 +59,21 @@
         <div class="question-nr">
           <span>3</span>
         </div>
-        <div class="question-title">What time range do you want to investigate?</div>
-      </div>
-      <div class="question-body">
-        <TimeRange />
-        <div class="container">
-          <div class="content">
-            <button>Alright! Get the data and start analyzing</button>
+        {#if $selected}
+          <!-- content here -->
+          <div class="question-title">What time range do you want to investigate?</div>
+          <div class="question-body">
+            <TimeRange />
+            <div class="container">
+              <div class="content">
+                <button>Alright! Get the data and start analyzing</button>
+              </div>
+            </div>
           </div>
-        </div>
+        {:else}
+          <!-- else content here -->
+          <div class="question-title">Please select what you want to do first.</div>
+        {/if}
       </div>
     </div>
   </div>

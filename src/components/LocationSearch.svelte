@@ -1,4 +1,5 @@
 <script>
+  import {location} from '../store'
 </script>
 
 <div class="container backToCategories">
@@ -9,14 +10,14 @@
         class="locationSearch shadow"
         type="text"
         placeholder="Type your location"
-      />
+        bind:value={$location} />
     </div>
   </div>
 </div>
 
 <style>
   div.locationSearch input {
-    font-family: "nowaymedium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'nowaymedium', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16px;
     height: auto;
     width: 100%;
