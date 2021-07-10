@@ -31,6 +31,18 @@
 
   .task {
     flex-grow: 1;
+    transition: all 0.15s;
+  }
+
+  .task > span {
+    color: var(--color-dark-grey);
+    transition: all 0.15s;
+  }
+  .selected > .task {
+    color: var(--color-white);
+  }
+  .selected > .task > span {
+    color: var(--color-white);
   }
 
   h2 {
@@ -47,7 +59,7 @@
 
   button.take-indice {
     border-radius: 12px;
-    background: #ffbd12;
+    background: var(--color-secondary-action);
     padding: 10px 12px;
     margin-left: 20px;
     font-family: 'nowayregular', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -63,8 +75,8 @@
   }
 
   .selected {
-    background: #1947e5;
-    color: #fff;
+    background: var(--color-secondary-action);
+    /* color: #fff; */
     transition: all 0.3s;
   }
 </style>
@@ -81,8 +93,10 @@
               <span>Difficulty: {capitalize(option.difficulty)}</span>
             </div>
             <button class="help">?</button>
-            <button id={index} class="take-indice" on:click={() => (selected = index)}
-              >Take this</button>
+            {#if !(selected === index)}
+              <button id={index} class="take-indice" on:click={() => (selected = index)}
+                >Take this</button>
+            {/if}
           </li>
         {/each}
       </ul>
