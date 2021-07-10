@@ -30,6 +30,7 @@
     transition-duration: 0.5s;
     background-size: cover;
     border: 2px solid #000;
+    cursor: pointer;
   }
 
   button:hover {

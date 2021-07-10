@@ -51,6 +51,7 @@
     padding: 10px 12px;
     margin-left: 20px;
     font-family: 'nowayregular', -apple-system, BlinkMacSystemFont, sans-serif;
+    cursor: pointer;
   }
 
   button.help {
