@@ -5,6 +5,8 @@
   const capitalize = str => {
     return str.charAt(0).toUpperCase() + str.slice(1)
   }
+
+  let selected
 </script>
 
 <style>
@@ -58,6 +60,12 @@
     font-family: 'nowaybold', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 120%;
   }
+
+  .selected {
+    background: #1947e5;
+    color: #fff;
+    transition: all 0.3s;
+  }
 </style>
 
 <div class="container">
@@ -65,14 +73,15 @@
     {#each choices as choice}
       <p>{choice.intro}</p>
       <ul class="indices">
-        {#each choice.options as option}
-          <li class="shadow">
+        {#each choice.options as option, index}
+          <li class="shadow" class:selected={selected === index}>
             <div class="task">
               <h2>{option.heading}</h2>
               <span>Difficulty: {capitalize(option.difficulty)}</span>
             </div>
             <button class="help">?</button>
-            <button class="take-indice">Take this</button>
+            <button id={index} class="take-indice" on:click={() => (selected = index)}
+              >Take this</button>
           </li>
         {/each}
       </ul>
