@@ -5,14 +5,17 @@ export const vegetation = {
             {
                 heading: 'Visualizing Barren Soil',
                 difficulty: 'easy',
+                task: 'visualize barren soil'
             },
             {
                 heading: 'Analyzing Green Vegetation Health',
                 difficulty: 'easy to moderate',
+                task: 'analyze green vegetation health'
             },
             {
                 heading: 'Analyzing Land Cover',
                 difficulty: 'easy',
+                task: 'analyze land cover'
             },
         ]
     }
