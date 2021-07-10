@@ -1,5 +1,5 @@
 <script>
-  import {task} from './store'
+  import {choice} from './store'
   import {cases as choices} from './data/cases'
 
   let selected
@@ -8,8 +8,8 @@
     return str.charAt(0).toUpperCase() + str.slice(1)
   }
 
-  const setTask = option => {
-    task.set(option)
+  const setChoice = option => {
+    choice.set(option)
   }
 </script>
 
@@ -31,7 +31,7 @@
                 class="take-indice"
                 on:click={() => {
                   selected = index
-                  setTask(option)
+                  setChoice(option)
                 }}>Take this</button>
             {/if}
           </li>

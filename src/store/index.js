@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const task = writable();
+export const choice = writable();
