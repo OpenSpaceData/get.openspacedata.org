@@ -78,7 +78,8 @@
             <TimeRange />
             <div class="container">
               <div class="content">
-                <button disabled={disableButton}>Alright! Get the data and start analyzing</button>
+                <button on:click={() => (form.display = !form.display)} disabled={disableButton}
+                  >Alright! Get the data and start analyzing</button>
               </div>
             </div>
           </div>
