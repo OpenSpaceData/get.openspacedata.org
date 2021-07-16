@@ -1,7 +1,7 @@
 export const categories = [
   {
     id: 'vegetation',
-    text: `Analyse vegetation and forestry`,
+    text: `Analyse vegetation and geology`,
   },
   {
     id: 'floods',
