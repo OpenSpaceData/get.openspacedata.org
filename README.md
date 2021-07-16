@@ -66,6 +66,9 @@ Structure for guides:
 └── ...
 ```
 
+The planned guides for the `Beta` version:
+![Planned use cases](/use_cases.png)
+
 ## API data
 
 The file `api-respond.json` is located in the root folder. It is an example of an API respond by the [OpenSpaceData API](https://github.com/OpenSpaceData/api.openspacedata.org).
