@@ -6,11 +6,13 @@ export const vegetation = {
       heading: 'Analyzing Green Vegetaation Health',
       difficulty: 'easy',
       task: 'analyze green vegetation health',
+      guide: 'green-vegetation-health',
     },
     {
       heading: 'Visualizing Barren Soil',
       difficulty: 'moderate',
       task: 'visualize barren soil',
+      guide: 'barren-soil',
     },
   ],
 }

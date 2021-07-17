@@ -6,6 +6,7 @@
   import Cases from './Cases.svelte'
   import LocationSearch from './components/LocationSearch.svelte'
   import TimeRange from './components/TimeRange.svelte'
+  import Markdown from './components/Markdown.svelte'
 
   let choice = {category: true}
   let form = {display: true}
@@ -102,10 +103,7 @@
       </div>
       <div class="question-body">
         <div class="content">
-          <p>
-            Here comes the content from <em>introduction.md</em> in the
-            <em>guides</em> directory.
-          </p>
+          <Markdown folder={$selected.guide} file="introduction"/>
         </div>
       </div>
       <div class="question-head">
@@ -144,10 +142,7 @@
       </div>
       <div class="question-body">
         <div class="content">
-          <p>
-            Here comes the content from <em>process.md</em> in the
-            <em>guides</em> directory.
-          </p>
+          <Markdown folder={$selected.guide} file="process"/>
         </div>
       </div>
       <div class="question-head">
@@ -158,10 +153,7 @@
       </div>
       <div class="question-body">
         <div class="content">
-          <p>
-            Here comes the content from <em>interpret.md</em> in the
-            <em>guides</em> directory.
-          </p>
+          <Markdown folder={$selected.guide} file="interpret"/>
         </div>
       </div>
     </div>
