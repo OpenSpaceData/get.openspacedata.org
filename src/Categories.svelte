@@ -1,8 +1,20 @@
 <script>
+  import {category} from './store'
   import {categories} from './data/categories'
 
   export let toggle = () => {}
+  const setChoice = option => {
+    category.set(option)
+  }
 </script>
+
+<div class="categories">
+  {#each categories as cat}
+    <button id={cat.id} on:click={() => {toggle(); setChoice(cat)}}>
+      {cat.text}
+    </button>
+  {/each}
+</div>
 
 <style>
   div.categories {
@@ -72,11 +84,3 @@
       url('./assets/img/iceland.jpg');
   }
 </style>
-
-<div class="categories">
-  {#each categories as category}
-    <button id={category.id} on:click={toggle}>
-      {category.text}
-    </button>
-  {/each}
-</div>

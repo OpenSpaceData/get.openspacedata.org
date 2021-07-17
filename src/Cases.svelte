@@ -1,6 +1,6 @@
 <script>
-  import {choice} from './store'
-  import {cases as choices} from './data/cases'
+  import {choice, category} from './store'
+  const choices = $category.cases.options;
 
   let selected
 
@@ -15,14 +15,13 @@
 
 <div class="container">
   <div class="content">
-    {#each choices as choice}
-      <p>{choice.intro}</p>
+    <p>{$category.cases.intro}</p>
+    {#each choices as choice, index}
       <ul class="indices">
-        {#each choice.options as option, index}
           <li class="shadow" class:selected={selected === index}>
             <div class="task">
-              <h2>{option.heading}</h2>
-              <span>Difficulty: {capitalize(option.difficulty)}</span>
+              <h2>{choice.heading}</h2>
+              <span>Difficulty: {capitalize(choice.difficulty)}</span>
             </div>
             <button class="help">?</button>
             {#if !(selected === index)}
@@ -31,15 +30,13 @@
                 class="take-indice"
                 on:click={() => {
                   selected = index
-                  setChoice(option)
+                  setChoice(choice)
                 }}>Take this</button>
             {/if}
           </li>
-        {/each}
       </ul>
     {/each}
   </div>
-  <pre />
 </div>
 
 <style>
