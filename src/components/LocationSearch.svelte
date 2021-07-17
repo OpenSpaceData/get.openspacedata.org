@@ -1,16 +1,24 @@
 <script>
   import {location} from '../store'
+  import {Geocoder} from '@beyonk/svelte-mapbox'
 </script>
 
 <div class="container backToCategories">
   <div class="content">
     <div class="locationSearch">
-      <img src="./build/assets/img/navigation.svg" alt="" />
+      <!-- <img src="./build/assets/img/navigation.svg" alt="" />
       <input
         class="locationSearch shadow"
         type="text"
         placeholder="Type your location"
-        bind:value={$location} />
+        bind:value={$location} /> -->
+      <Geocoder
+        accessToken="%MAPBOX_API%"
+        options={{types: 'country, region, postcode, district'}}
+        on:result={result => {
+          console.log(result)
+          location.set(result.detail.result)
+        }} />
     </div>
   </div>
 </div>

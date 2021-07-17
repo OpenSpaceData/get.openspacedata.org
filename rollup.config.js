@@ -6,6 +6,10 @@ import {terser} from 'rollup-plugin-terser'
 import css from 'rollup-plugin-css-only'
 import json from '@rollup/plugin-json'
 import {string} from 'rollup-plugin-string'
+import replace from '@rollup/plugin-replace'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const production = !process.env.ROLLUP_WATCH
 
@@ -51,6 +55,10 @@ export default {
     css({output: 'bundle.css'}),
     string({
       include: ['**/*.md'],
+    }),
+    replace({
+      MAPBOX_API: process.env.MAPBOX_API,
+      delimiters: ['%', '%'],
     }),
 
     // If you have external dependencies installed from

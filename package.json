@@ -8,9 +8,11 @@
     "start": "sirv public --no-clear"
   },
   "devDependencies": {
+    "@beyonk/svelte-mapbox": "^7.7.1",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-replace": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -34,6 +36,7 @@
     "svelte-calendar": "^2.0.4"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "markdown-it": "^12.1.0",
     "punycode": "^2.1.1",
     "sirv-cli": "^1.0.0",

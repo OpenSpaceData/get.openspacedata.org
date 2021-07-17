@@ -21,7 +21,7 @@
       <div class="question-nr">
         <span>1</span>
       </div>
-      <div class="question-title">Download your satellite imagery</div>
+      <div class="question-title">Download your satellite imagery for {$location.place_name}</div>
     </div>
     <div class="question-body">
       <div class="content">
