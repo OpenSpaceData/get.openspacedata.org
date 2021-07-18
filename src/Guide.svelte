@@ -1,6 +1,45 @@
 <script>
+  import {onMount} from 'svelte'
   import Markdown from './components/Markdown.svelte'
   import {choice as selected, location, range} from './store'
+
+  const rangeType = $range.type
+  let downloads = []
+
+  const getLatestFiles = async (files, bandsToAnalyze) => {
+    const latestFiles = []
+    const getFiles = files.reduce(
+      (acc, file) => (acc = acc['Cloud cover'] > file['Cloud cover'] ? acc : file)
+    )
+
+    bandsToAnalyze.forEach(band => {
+      if (band in getFiles) {
+        const obj = {band, file: getFiles[band]}
+        latestFiles.push(obj)
+        // downloads.push(getFiles[band])
+      }
+    })
+
+    return latestFiles
+  }
+
+  const getFilename = file => {
+    const url = new URL(file).pathname.split('/')
+    const filename = `${url[url.length - 2]}/${url[url.length - 1]}`
+    return filename
+  }
+
+  onMount(async () => {
+    const api = await fetch('/api-respond.json').then(resp => resp.json())
+    const {files, bands} = api
+    let bandsToAnalyze = bands.map(band => band.band)
+
+    if (rangeType === 'latest') {
+      downloads = await getLatestFiles(files, bandsToAnalyze)
+    }
+
+    console.log(downloads)
+  })
 </script>
 
 <div class="guide">
@@ -31,7 +70,15 @@
           buttons: 👇
         </p>
         <ul class="downloads">
-          <li>
+          {#each downloads as download}
+            <li>
+              <a href={download.file} download="" id="download-band-{download.band}"
+                >Download file: {getFilename(download.file)}</a>
+            </li>
+          {:else}
+            Loading ....
+          {/each}
+          <!-- <li>
             <button>Download file S2A_33TUK_20210410_0_L2A/B02.tif</button>
           </li>
           <li>
@@ -39,7 +86,7 @@
           </li>
           <li>
             <button>Download file S2A_33TUK_20210410_0_L2A/B04.tif</button>
-          </li>
+          </li> -->
         </ul>
         <h3>Why I have to download multiple files?</h3>
         <p>Good question! Here comes the answer. Lorem ipsum...</p>
