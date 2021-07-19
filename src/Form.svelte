@@ -50,29 +50,26 @@
         {/if}
       </div>
     </div>
-    <div class="use-cases">
-      <div class="question-head">
-        <div class="question-nr">
-          <span>2</span>
-        </div>
-        {#if $selected}
+    {#if $selected}
+      <div class="use-cases" transition:fade>
+        <div class="question-head">
+          <div class="question-nr">
+            <span>2</span>
+          </div>
           <!-- content here -->
           <div class="question-title">Where do you want to {$selected.task}?</div>
           <div class="question-body">
             <LocationSearch />
           </div>
-        {:else}
-          <!-- else content here -->
-          <div class="question-title">Please select what you want to do first.</div>
-        {/if}
-      </div>
-    </div>
-    <div class="use-cases">
-      <div class="question-head">
-        <div class="question-nr">
-          <span>3</span>
         </div>
-        {#if $selected}
+      </div>
+    {/if}
+    {#if $selected && $location}
+      <div class="use-cases" transition:fade>
+        <div class="question-head">
+          <div class="question-nr">
+            <span>3</span>
+          </div>
           <!-- content here -->
           <div class="question-title">What time range do you want to investigate?</div>
           <div class="question-body">
@@ -84,12 +81,9 @@
               </div>
             </div>
           </div>
-        {:else}
-          <!-- else content here -->
-          <div class="question-title">Please select what you want to do first.</div>
-        {/if}
+        </div>
       </div>
-    </div>
+    {/if}
   </div>
 {:else}
   <Guide />
