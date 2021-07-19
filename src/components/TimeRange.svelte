@@ -10,15 +10,18 @@
         type="radio"
         name="timeRange"
         value="latest"
-        on:click={() => ($range = {...$range, type: 'latest'})} />Gimme the latest imagery with best
-      quality
+        on:click={() => ($range = {...$range, type: 'latest'})} />
+      <span class="radioInput" />
+      Gimme the latest imagery with best quality
     </label>
     <label>
       <input
         type="radio"
         on:click={() => ($range = {...$range, type: 'range'})}
         name="timeRange"
-        value="range" />Let me set the time range myself
+        value="range" />
+      <span class="radioInput" />
+      Let me set the time range myself
     </label>
   </div>
   {#if $range.type === 'range'}
@@ -52,6 +55,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 1rem;
   }
 
   div p.to {
@@ -74,6 +78,39 @@
     border: 2px solid #000;
     margin: 15px 0;
     box-shadow: #000 1px 2px 0;
+  }
+
+  label {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  label > .radioInput {
+    position: relative;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 100%;
+    border: 2px solid #000;
+  }
+
+  label > input:checked + .radioInput::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    height: 1rem;
+    width: 1rem;
+    border-radius: 100%;
+    border: 4px solid #fff;
+    background: #000;
+  }
+
+  label > input[type='radio'] {
+    display: none;
   }
 
   div.field img {

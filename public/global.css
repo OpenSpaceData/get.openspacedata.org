@@ -57,7 +57,8 @@ input:disabled {
 button {
 	color: #333;
 	background-color: #f4f4f4;
-	outline: none;
+	/* outline: none; */
+	--outlineColor: #666;
 }
 
 button:disabled {
@@ -68,6 +69,14 @@ button:not(:disabled):active {
 	background-color: #ddd;
 }
 
-button:focus {
-	border-color: #666;
+/* button:focus {
+	outline-color: #666;
+} */
+
+*:focus {
+	outline-color: var(--outlineColor, currentColor);
+	/* outline-color: #666; */
+    outline-offset: 0.5rem;
+    outline-style: dashed;
+    outline-width: 2px;
 }

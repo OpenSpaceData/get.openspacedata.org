@@ -7,6 +7,7 @@ import css from 'rollup-plugin-css-only'
 import json from '@rollup/plugin-json'
 import {string} from 'rollup-plugin-string'
 import replace from '@rollup/plugin-replace'
+import svg from 'rollup-plugin-svg'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -50,6 +51,7 @@ export default {
       },
     }),
     json(),
+    svg(),
     // we'll extract any component CSS out into
     // a separate file - better for performance
     css({output: 'bundle.css'}),

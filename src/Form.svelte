@@ -32,9 +32,7 @@
   <div class="start-form">
     <div class="use-cases">
       <div class="question-head">
-        <div class="question-nr">
-          <span>1</span>
-        </div>
+        <div class="question-nr">1</div>
         <div class="question-title">What do you want to do?</div>
       </div>
       <div class="question-body">
@@ -53,32 +51,43 @@
     {#if $selected}
       <div class="use-cases" transition:fade>
         <div class="question-head">
-          <div class="question-nr">
-            <span>2</span>
-          </div>
-          <!-- content here -->
+          <div class="question-nr">2</div>
           <div class="question-title">Where do you want to {$selected.task}?</div>
-          <div class="question-body">
-            <LocationSearch />
-          </div>
+        </div>
+        <div class="question-body">
+          <LocationSearch />
         </div>
       </div>
     {/if}
     {#if $selected && $location}
       <div class="use-cases" transition:fade>
         <div class="question-head">
-          <div class="question-nr">
-            <span>3</span>
-          </div>
+          <div class="question-nr">3</div>
           <!-- content here -->
           <div class="question-title">What time range do you want to investigate?</div>
-          <div class="question-body">
-            <TimeRange />
-            <div class="container">
-              <div class="content">
-                <button on:click={() => (form.display = !form.display)} disabled={disableButton}
-                  >Alright! Get the data and start analyzing</button>
-              </div>
+        </div>
+        <div class="question-body">
+          <div class="container">
+            <div class="content">
+              <TimeRange />
+              <button
+                class="submit"
+                on:click={() => (form.display = !form.display)}
+                disabled={disableButton}
+                >Alright! Get the data and start analyzing
+                {#if !disableButton}
+                  <!-- content here -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    ><path
+                      fill="currentColor"
+                      d="M10.061 19.061L17.121 12 10.061 4.939 7.939 7.061 12.879 12 7.939 16.939z" /></svg>
+                {/if}
+              </button>
             </div>
           </div>
         </div>
@@ -104,44 +113,51 @@
   }
 
   .use-cases {
-    max-width: 940px;
+    max-width: 1280px;
+    width: 100%;
     margin: 0 auto;
-    clear: both;
-    vertical-align: middle;
+  }
+
+  .start-form {
+    display: flex;
+    flex-direction: column;
   }
 
   .question-head {
     max-width: 675px;
-    margin: 0 auto;
+    margin: 2rem auto 0;
     font-weight: bold;
-    font-size: 30px;
-    padding: 2rem 0;
+    font-size: 2rem;
+    /* padding: 2rem 0; */
+    display: flex;
+    gap: 1rem;
   }
 
   .question-title {
     font-family: 'nowaybold', -apple-system, BlinkMacSystemFont, sans-serif;
     width: 90%;
     height: auto;
-    float: left;
+    /* float: left; */
   }
 
   .question-nr {
     font-family: 'nowaybold', -apple-system, BlinkMacSystemFont, sans-serif;
     height: auto;
     width: 10%;
-    float: left;
-  }
-
-  .question-nr span {
+    /* float: left; */
     height: 44px;
     width: 44px;
     background-color: #000;
     border-radius: 50%;
     border: 3px #000 solid;
     color: #fff;
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
+    place-items: center;
+  }
+
+  .question-nr span {
   }
 
   .question-nr span.no-fill {
@@ -175,5 +191,11 @@
     background: var(--color-dark-grey) !important;
     color: var(--color-white) !important;
     cursor: default !important;
+  }
+
+  .submit {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
 </style>
