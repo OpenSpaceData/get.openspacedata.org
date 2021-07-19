@@ -1,55 +1,17 @@
 <script>
+  import {keys} from 'markdown-it/lib/common/html_blocks'
+
   import {onMount} from 'svelte'
   import Markdown from './components/Markdown.svelte'
   import {choice as selected, location, range} from './store'
 
   const rangeType = $range.type
+  /*
+  If the rangeType === 'latest' then set a startDate of 2 months ago & an endDate of today.
+  If it is a 'range' then send through the range dates set by the user.
+  */
+
   let downloads = []
-
-  const getLatestFiles = async (files, bandsToAnalyze) => {
-    const latestFiles = []
-    const getFiles = files.reduce((acc, file) => {
-      // console.log(acc)
-      const fileDate = new Date(file.Date)
-      const accDate = new Date(acc.Date)
-
-      acc = acc['Cloud cover'] < file['Cloud cover'] ? acc : file
-      return acc
-    }, {})
-
-    bandsToAnalyze.forEach(band => {
-      if (band in getFiles) {
-        const obj = {band, file: getFiles[band]}
-        latestFiles.push(obj)
-      }
-    })
-
-    console.log(getFiles)
-    return latestFiles
-  }
-
-  const getRangeFiles = async (files, bandsToAnalyze) => {
-    const rangeFiles = []
-    const startDate = new Date($range.startDate)
-    const endDate = new Date($range.endDate)
-    const getFiles = files.filter(file => {
-      const fileDate = new Date(file.Date)
-      return fileDate >= startDate && fileDate <= endDate
-    })
-
-    console.log(getFiles)
-
-    bandsToAnalyze.forEach(band => {
-      getFiles.forEach(file => {
-        if (band in file) {
-          const obj = {band, file: file[band]}
-          rangeFiles.push(obj)
-        }
-      })
-    })
-
-    return rangeFiles
-  }
 
   const getFilename = file => {
     const url = new URL(file).pathname.split('/')
@@ -58,19 +20,26 @@
   }
 
   onMount(async () => {
+    /*
+    Temporary use of json file.
+    Todo: Send request to API using 
+    http://api.openspacedata.org/v1/{USE_CASE}/?from={startDate}&to={endDate}&location={location}&location=[ARRAY of bbox values from Mapbox]
+    */
     const api = await fetch('/api-respond.json').then(resp => resp.json())
     const {files, bands} = api
-    let bandsToAnalyze = bands.map(band => band.band)
+    const filesRegex = /B.{2}/g
 
-    if (rangeType === 'latest') {
-      downloads = await getLatestFiles(files, bandsToAnalyze)
-    }
+    downloads = await files
+      .map(file => {
+        return Object.entries(file).filter(entry => {
+          if (entry[0].match(filesRegex)) {
+            return entry
+          }
+        })
+      })
+      .flat()
 
-    if (rangeType === 'range') {
-      downloads = await getRangeFiles(files, bandsToAnalyze)
-    }
-
-    console.log(downloads)
+    // console.log(downloads)
   })
 </script>
 
@@ -104,21 +73,12 @@
         <ul class="downloads">
           {#each downloads as download}
             <li>
-              <a href={download.file} download="" id="download-band-{download.band}"
-                >Download file: {getFilename(download.file)}</a>
+              <a href={download[1]} download="" id="download-band-{download[0]}"
+                >Download file: {getFilename(download[1])}</a>
             </li>
           {:else}
             Loading ....
           {/each}
-          <!-- <li>
-            <button>Download file S2A_33TUK_20210410_0_L2A/B02.tif</button>
-          </li>
-          <li>
-            <button>Download file S2A_33TUK_20210410_0_L2A/B03.tif</button>
-          </li>
-          <li>
-            <button>Download file S2A_33TUK_20210410_0_L2A/B04.tif</button>
-          </li> -->
         </ul>
         <h3>Why I have to download multiple files?</h3>
         <p>Good question! Here comes the answer. Lorem ipsum...</p>
@@ -235,7 +195,8 @@
     padding: 0.5rem 0;
   }
 
-  button {
+  button,
+  a[download] {
     border-radius: 12px;
     background: #1947e5;
     font-family: 'nowayregular', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -248,5 +209,9 @@
     border: none;
     border-bottom: 2px solid #000;
     cursor: pointer;
+  }
+
+  a[download] {
+    display: block;
   }
 </style>
