@@ -1,5 +1,6 @@
 <script>
   import {onMount} from 'svelte'
+  import {get} from 'svelte/store'
   import Markdown from './components/Markdown.svelte'
   import {choice as selected, location, range} from './store'
 
@@ -16,11 +17,33 @@
       if (band in getFiles) {
         const obj = {band, file: getFiles[band]}
         latestFiles.push(obj)
-        // downloads.push(getFiles[band])
       }
     })
 
     return latestFiles
+  }
+
+  const getRangeFiles = async (files, bandsToAnalyze) => {
+    const rangeFiles = []
+    const startDate = new Date($range.startDate)
+    const endDate = new Date($range.endDate)
+    const getFiles = files.filter(file => {
+      const fileDate = new Date(file.Date)
+      return fileDate >= startDate && fileDate <= endDate
+    })
+
+    console.log(getFiles)
+
+    bandsToAnalyze.forEach(band => {
+      getFiles.forEach(file => {
+        if (band in file) {
+          const obj = {band, file: file[band]}
+          rangeFiles.push(obj)
+        }
+      })
+    })
+
+    return rangeFiles
   }
 
   const getFilename = file => {
@@ -36,6 +59,10 @@
 
     if (rangeType === 'latest') {
       downloads = await getLatestFiles(files, bandsToAnalyze)
+    }
+
+    if (rangeType === 'range') {
+      downloads = await getRangeFiles(files, bandsToAnalyze)
     }
 
     console.log(downloads)
