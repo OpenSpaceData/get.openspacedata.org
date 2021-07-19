@@ -1,6 +1,5 @@
 <script>
   import {onMount} from 'svelte'
-  import {get} from 'svelte/store'
   import Markdown from './components/Markdown.svelte'
   import {choice as selected, location, range} from './store'
 
@@ -9,9 +8,14 @@
 
   const getLatestFiles = async (files, bandsToAnalyze) => {
     const latestFiles = []
-    const getFiles = files.reduce(
-      (acc, file) => (acc = acc['Cloud cover'] > file['Cloud cover'] ? acc : file)
-    )
+    const getFiles = files.reduce((acc, file) => {
+      // console.log(acc)
+      const fileDate = new Date(file.Date)
+      const accDate = new Date(acc.Date)
+
+      acc = acc['Cloud cover'] < file['Cloud cover'] ? acc : file
+      return acc
+    }, {})
 
     bandsToAnalyze.forEach(band => {
       if (band in getFiles) {
@@ -20,6 +24,7 @@
       }
     })
 
+    console.log(getFiles)
     return latestFiles
   }
 
