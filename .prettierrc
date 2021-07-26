@@ -1,16 +1,16 @@
 {
-  "arrowParens": "avoid",
-  "semi": false,
-  "printWidth": 100,
-  "bracketSpacing": false,
-  "singleQuote": true,
-  "trailingComma": "es5",
-  "svelteSortOrder": "options-scripts-markup-styles",
-  "svelteStrictMode": false,
-  "svelteBracketNewLine": false,
-  "svelteAllowShorthand": true,
-  "svelteIndentScriptAndStyle": true,
-  "plugins": [
-    "prettier-plugin-svelte"
-  ]
+	"arrowParens": "avoid",
+	"semi": false,
+	"printWidth": 100,
+	"bracketSpacing": false,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"svelteSortOrder": "options-scripts-markup-styles",
+	"svelteStrictMode": false,
+	"svelteBracketNewLine": false,
+	"svelteAllowShorthand": true,
+	"svelteIndentScriptAndStyle": true,
+	"plugins": [
+		"prettier-plugin-svelte"
+	]
 }

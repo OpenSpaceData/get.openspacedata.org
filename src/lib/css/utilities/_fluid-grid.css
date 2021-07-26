@@ -1,0 +1,42 @@
+.fluid-grid {
+	--min: 30ch;
+	--gap: var(--size-600);
+
+	display: grid;
+	gap: var(--gap);
+	grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+}
+
+.fluid-grid[data-auto-fill] {
+	grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
+}
+
+.fluid-grid.two {
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 36rem) {
+	.fluid-grid {
+		--min: 20ch;
+	}
+	.fluid-grid.two {
+		--gap: var(--size-700);
+		column-gap: var(--size-900);
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+ul.fluid-grid li {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--size-300);
+}
+
+ul.fluid-grid[data-align='top'] {
+	align-items: baseline;
+	gap: var(--size-300);
+}
+
+ul.fluid-grid[data-align='top'] li {
+	display: block;
+}

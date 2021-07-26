@@ -1,0 +1,16 @@
+.full-width {
+    margin-left: calc(var(--size-400) * -1);
+    margin-right: calc(var(--size-400) * -1);
+    padding: var(--size-400) var(--size-600) var(--size-600) var(--size-600);
+  }
+  
+  .full-width.vertical-space {
+    margin-top: var(--size-800);
+    margin-bottom: var(--size-600);
+  }
+  
+  @media (min-width: 62rem) {
+    .full-width {
+      grid-column: -1/1;
+    }
+  }

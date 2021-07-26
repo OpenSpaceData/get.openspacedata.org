@@ -1,0 +1,14 @@
+.auto-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      var(--auto-grid-cols, autofill),
+      minmax(var(--auto-grid-min-size, 16rem), var(--auto-max-grid-size, 1fr))
+    );
+    grid-gap: var(--auto-grid-gap, var(--size-500));
+  }
+  
+  @media only screen and (max-width: 48em) {
+    .auto-grid {
+      --auto-grid-cols: 1;
+    }
+  }

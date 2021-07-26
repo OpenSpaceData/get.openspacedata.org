@@ -1,0 +1,38 @@
+a,
+a:visited {
+  text-shadow: -1px -1px 0 var(--background-color),
+    1px -1px 0 var(--background-color), -1px 1px 0 var(--background-color),
+    1px 1px 0 var(--background-color);
+  color: currentColor;
+  background-image: linear-gradient(
+      90deg,
+      var(--background-color),
+      var(--background-color)
+    ),
+    linear-gradient(90deg, var(--color-accent), var(--color-accent));
+  background-repeat: no-repeat;
+  background-position: -100% 105%, 0% 105%;
+  background-size: 0px 0.35ex, 100% 0.35ex;
+  text-decoration: none;
+  transition: background-size 0.4s ease-in;
+  font-weight: bold;
+}
+
+a:hover,
+a:focus {
+  /* color: var(--green); */
+  background-repeat: no-repeat;
+  background-position: 0% 105%, 0% 105%;
+  background-size: 100% 0.35ex, 100% 0.35ex;
+  text-decoration: none;
+}
+
+header a,
+header a:visited,
+footer a,
+footer a:visited {
+  background-image: linear-gradient(90deg, var(--color-black), var(--color-black)),
+    linear-gradient(90deg, var(--color-accent), var(--color-accent));
+  text-shadow: -1px -1px 0 var(--color-black), 1px -1px 0 var(--color-black),
+    -1px 1px 0 var(--color-black), 1px 1px 0 var(--color-black);
+}

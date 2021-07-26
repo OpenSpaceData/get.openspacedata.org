@@ -1,0 +1,35 @@
+:root {
+    /* Colours */
+	--color-black: #000;
+	--color-white: #fff;
+
+	--color-dark-grey: #474A57;
+
+	--color-primary: #1947E5;
+	--color-accent: #FFBD12;   
+
+    --dark-text-color: var(--color-black);
+    --light-text-color: var(--color-white);
+    --muted-text-color: var(--color-dark-grey);
+    --primary-text-color: var(--color-primary);
+    --accent-text-color: var(--color-accent);
+
+    --background-color: var(--color-white);
+
+    /* Fonts */
+    --base-font: "nowayregular", -apple-system, BlinkMacSystemFont, sans-serif;
+    --heading-font: "nowaybold", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --bold-font: "nowaymedium", -apple-system, BlinkMacSystemFont, sans-serif;
+    --italic-font: "nowayitalic", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Sizes */
+    --size-base: 1rem;
+    --size-300: calc(var(--size-base) * 0.833);
+    --size-400: calc(var(--size-base) * 1);
+    --size-500: calc(var(--size-base) * 1.2);
+    --size-600: calc(var(--size-base) * 1.44);
+    --size-700: calc(var(--size-base) * 1.728);
+    --size-800: calc(var(--size-base) * 2.074);
+    --size-900: calc(var(--size-base) * 2.488);
+}

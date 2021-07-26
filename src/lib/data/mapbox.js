@@ -1,0 +1,1 @@
+export const MAPBOX_API = import.meta.env.VITE_MAPBOX_API;
