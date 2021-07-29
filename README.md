@@ -67,6 +67,8 @@ text: 'Analyse vegetation and geology'
 ---
 heading: 'Visualizing Barren Soil'
 difficulty: 'moderate'
+# The id should correspond with a "machine_name" field in the API. 
+id: 'barren-soil' 
 ---
 ```
 

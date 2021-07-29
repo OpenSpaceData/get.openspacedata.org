@@ -20,6 +20,18 @@
   let downloads = []
   let guide
 
+  function formatDate(date) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear()
+
+    if (month.length < 2) month = '0' + month
+    if (day.length < 2) day = '0' + day
+
+    return [year, month, day].join('-')
+  }
+
   onMount(async () => {
     // Get the content for the guide
     guide = await fetch('/guides.json')
@@ -29,10 +41,28 @@
 	  Temporary use of json file.
 	  Todo: Send request to API using
 	  http://api.openspacedata.org/v1/{USE_CASE}/?from={startDate}&to={endDate}&location={location}&location=[ARRAY of bbox values from Mapbox]
-	  Sample: https://openspacedata.pythonanywhere.com/v1/water/?format=json&from=2021-07-01&to=2021-07-15&location=[32.4371337890625%2C25.809781975840405%2C32.92877197265625%2C26.251546424213046]
+	  Sample: https://openspacedata.pythonanywhere.com/v1/barren-soil/?format=json&from=2021-07-01&to=2021-07-15&location=[32.4371337890625%2C25.809781975840405%2C32.92877197265625%2C26.251546424213046]
 	  */
 
-    const api = await fetch('https://osd-fetch.fershad.workers.dev').then(resp => resp.json())
+    // Could zip files in a function:
+    // https://gist.github.com/noelvo/4502eea719f83270c8e9
+
+    // Or on the browser:
+    // https://huynvk.dev/blog/download-files-and-zip-them-in-your-browsers-using-javascript
+
+    const apiCase = $selected.id
+    const today = new Date()
+    const twoMonthsAgo = new Date().setMonth(today.getMonth() - 2)
+
+    const rangeStart = rangeType === 'latest' ? formatDate(twoMonthsAgo) : $range.startDate
+    const rangeEnd = rangeType === 'latest' ? formatDate(today) : $range.endDate
+
+    const apiUrl = `https://osd-fetch.fershad.workers.dev/?case=${apiCase}&from=${rangeStart}&to=${rangeEnd}&location=${$location.bbox}`
+    console.log(apiUrl)
+
+    const api = await fetch(apiUrl).then(resp => resp.json())
+
+    console.log(api)
     const {files, bands} = api
     const filesRegex = /B.{2}/g
 

@@ -1,4 +1,5 @@
 ---
-heading: 'Analyzing Green Vegetaation Health'
+heading: 'Analyzing Green Vegetation Health'
 difficulty: 'easy'
+id: 'green-vegetation-health'
 ---
