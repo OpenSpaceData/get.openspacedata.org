@@ -16,7 +16,7 @@ Great, you've cleared the first hurdle. Now the fun begins, because we are going
 
 The first thing to do is to start the QGis software you just installed. Now go to Project in the menu and then select `New`.
 
-![](/img/2-start-project.png)
+![](/img/ndvi-2-start-project.png)
 
 For the next steps: Depending on which operating system you are using, the display of QGis may be slightly different. However, the corresponding options and fields should still be available.
 
@@ -28,7 +28,7 @@ It sounds complicated to open satellite data, doesn't it? But it's not so bad, Q
 It’s pretty easy to open the files: Just go to the directory where your satellite data is saved, probably in the downloads directory, select the files and drag them into the layers panel in QGis. Just take a look on my screen to know exactly where to drag them:
 
 <video width="100%" height="auto" controls>
-  <source src="/img/3-open-data.mp4" type="video/mp4">
+  <source src="/img/ndvi-3-open-data.mp4" type="video/mp4">
 </video>
 
 *Note: If you have downloaded the files as a ZIP file, unpack them first.*
@@ -43,7 +43,7 @@ So that we can orient ourselves better on the data, we put a map on top of the d
 Go to the `browser panel` (on top of the layers panel) and look for the entry `XYZ Tiles`. Click on the small arrow on the left. Now just double click on `OpenStreetMap`. 
 
 <video width="100%" height="auto" controls>
-  <source src="/img/4-add-basemap.mp4" type="video/mp4">
+  <source src="/img/ndvi-4-add-basemap.mp4" type="video/mp4">
 </video>
 
 <details>
@@ -58,7 +58,7 @@ But, what happened there! Sometimes the basemap lays on top of your satellite da
 Depending on what you want to do, you can change the opacity of the layers, the order or hide specific layers. For now, we will just put the basemap behind our data. To do that, we just can rearrange the order of the layers with simple drag and drop. Select the OpenStreetMap layer and drag it to the bottom of the list.
 
 <video width="100%" height="auto" controls>
-  <source src="/img/4-order-layers.mp4" type="video/mp4">
+  <source src="/img/ndvi-4-order-layers.mp4" type="video/mp4">
 </video>
 
 ## Step 5: Learn about your data and how to get the vegetation health information from it
@@ -75,7 +75,7 @@ This all sounds very complicated, doesn't it? Let's start from the beginning. Wh
 
 <details>
   <summary>💡 Our data from the satellite are called raster data. So, what does this mean?</summary>
-    <img src="/img/ndvi-5-raster-data.png" alt="">
+    <img src="/img/ndvi-ndvi-5-raster-data.png" alt="">
     <p>Raster data is like a picture that you would take with a digital camera: at the lowest level of abstraction, it is a list of pixels with values. When you ‘zoom in’ and look closer at raster data, at some point you’ll see these discrete pixels, and it will look pixelated.</p>
     <p>Raster data is used in pictures of the Earth, like those taken by satellites - but that is just the beginning. Pixels don’t need to have colors - instead, each pixel can have a number that represents height and the raster data as a whole stores elevation data. Or pixels can store temperature or reflection data and be useful for environmental work.</p>
 </details>
@@ -115,7 +115,7 @@ To use this formula in QGis and with your data, you have to go the following ste
 6. Wait for it… Voila.
 
 <video width="100%" height="auto" controls>
-  <source src="/img/6-calculate-ndvi.mp4" type="video/mp4">
+  <source src="/img/ndvi-6-calculate-ndvi.mp4" type="video/mp4">
 </video>
 
 That’s all. Almost.
@@ -133,7 +133,7 @@ To make the data easier to understand, we want that no vegetation is brown and h
 8. Click `Apply` _and_ `Ok`.
 
 <video width="100%" height="auto" controls>
-  <source src="/img/7-colorize-data.mp4" type="video/mp4">
+  <source src="/img/ndvi-7-colorize-data.mp4" type="video/mp4">
 </video>
 
 Well done, now it's looking much nicer, right?
