@@ -64,7 +64,7 @@ Depending on what you want to do, you can change the opacity of the layers, the 
 ### Step 5: Learn about your data and how to get the vegetation health information from it
 Well, brace yourself: now comes the magic. What happens now? We will process the data so that we can see from the image where healthy green plants are, where plants are not healthy and where there are no plants.
 
-**How do we do that?**\
+**How do we do that?** \
 We use a method that calculates the different data with a certain formula so that the result is a value between -1 and +1 for each point on the image. -1 stands for "no vegetation" and +1 for "healthy vegetation". For the sake of simplicity, we can also refer to vegetation as plants.
 
 This method is called calculating an index. The index is the result of the formula and the formula we use is called NDVI, the Normalized Difference Vegetation Index.
