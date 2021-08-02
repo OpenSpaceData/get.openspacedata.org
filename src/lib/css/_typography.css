@@ -33,6 +33,10 @@ h2 {
 	font-size: var(--size-700);
 }
 
+.task h2 {
+	margin: 0;
+}
+
 h3 {
 	font-size: var(--size-600);
 }

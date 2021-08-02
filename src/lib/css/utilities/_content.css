@@ -10,3 +10,8 @@ code {
 details, video {
     margin: 1.5rem 0 1.5rem 0;
 }
+
+details summary {
+    font-weight: bold;
+    cursor: pointer;
+}
