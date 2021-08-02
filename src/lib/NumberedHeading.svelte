@@ -27,14 +27,15 @@
 		font-size: var(--size-800);
 		color: var(--color-white);
 		border-radius: 100%;
-		height: calc(var(--size-900) * 2);
-		width: calc(var(--size-900) * 2);
+		height: calc(var(--size-900) * 0.8);
+		width: calc(var(--size-900) * 0.8);
 		display: grid;
 		align-items: center;
 		justify-content: center;
 		place-items: center;
 		position: relative;
 		z-index: 0;
+		margin: 0 2rem 0 0;
 	}
 
 	.heading .title {
@@ -47,8 +48,8 @@
 		content: '';
 		background: var(--color-black);
 		border-radius: 50%;
-		height: calc(var(--size-900) * 2);
-		width: calc(var(--size-900) * 2);
+		height: calc(var(--size-900) * 1.8);
+		width: calc(var(--size-900) * 1.8);
 		position: absolute;
 		z-index: -1;
 		top: -0.4rem;

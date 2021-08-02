@@ -30,24 +30,24 @@ h1 {
 }
 
 h2 {
-	font-size: var(--size-800);
-}
-
-h3 {
 	font-size: var(--size-700);
 }
 
-h4 {
+h3 {
 	font-size: var(--size-600);
 }
 
-h5 {
+h4 {
 	font-size: var(--size-500);
+}
+
+h5 {
+	font-size: var(--size-400);
 }
 
 small,
 .text-small {
-	font-size: var(--size-300);
+	font-size: var(--size-200);
 }
 
 b,
