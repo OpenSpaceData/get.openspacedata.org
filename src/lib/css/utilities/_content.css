@@ -1,0 +1,8 @@
+code {
+    box-shadow: var(--color-black) 1px 2px 0;
+    background: #C0C0C0;
+    padding: 3px 7px;
+    display: inline;
+    border-radius: 3px;
+    margin-right: 2px;
+}
