@@ -64,7 +64,7 @@ Depending on what you want to do, you can change the opacity of the layers, the 
 ## Step 5: Learn about your data and how to get the vegetation health information from it
 Well, brace yourself: now comes the magic. What happens now? We will process the data so that we can see from the image where healthy green plants are, where plants are not healthy and where there are no plants.
 
-**How do we do that?**
+**How do we do that?**\
 We use a method that calculates the different data with a certain formula so that the result is a value between -1 and +1 for each point on the image. -1 stands for "no vegetation" and +1 for "healthy vegetation". For the sake of simplicity, we can also refer to vegetation as plants.
 
 This method is called calculating an index. The index is the result of the formula and the formula we use is called NDVI, the Normalized Difference Vegetation Index.
@@ -140,3 +140,39 @@ Well done, now it's looking much nicer, right?
 
 ## Step 8: Analyze your data
 There are now two ways to take a closer look at the data. Either via QGis itself or you export. Both have their advantages and disadvantages. I will explain them to you in the following:
+
+**Use QGis to move around the data**\
+QGis offers a variety of ways to dive deep into your data. You can zoom in and out of the layers, move freely on the map and make individual layers more transparent to get an even better overview.
+
+To make your NDVI layer more transparent so that you can see the basemap better, you first have to hide the two bands. We don't need them any more. Just click on the tick in front of the layer. My recommendation: Only tick the layers you really need. That way you keep the overview. In our case it is the NDVI layer and the basemap:
+
+<video width="100%" height="auto" controls>
+  <source src="/img/ndvi-8-layer-display.mp4" type="video/mp4">
+</video>
+
+Then click on the small brush in the layers panel. A new area has opened on the right side. Click on `Transparency` to set the transparency for each layer under `Global Transparency`. Make sure that you have selected the right layer. I set the transparency a little lower so that I can see the basemap underneath better. This makes it easier for me to orientate myself.
+
+<video width="100%" height="auto" controls>
+  <source src="/img/ndvi-8-layer-opacity.mp4" type="video/mp4">
+</video>
+
+Now you can explore the map and look at the different NDVI values, which lie between -1 and 1, for each pixel on your map. To do this, click on the symbol with the i and the mouse pointer in the toolbar. Select the function `Identify Features`. Now you can click on a point on the map that you are interested in. As soon as you have done this, a new area will open on the right side and you can read the value. You can read more about the meaning of the values in the Interpret step below.
+
+<video width="100%" height="auto" controls>
+  <source src="/img/ndvi-8-identify-features.mp4" type="video/mp4">
+</video>
+
+**Export the image**\
+To be able to share your data with others or to print them, it is useful to export the data - for example as PDF or JPG. You can then share the files with other people without them having to have QGis installed. Practical, isn't it?
+
+To do this, simply take the following steps:
+
+1. Go to `Project` in the menu.
+2. Select `Import/Export` and choose `Export Map to Image` or `Export Map to PDF`.
+3. If you have selected PDF: Check the box `Create Geospatial PDF (GeoPDF)`.
+4. Now click `Save`.
+5. Select the location where you want to save the file, enter a file name and click `Save`.
+
+<video width="100%" height="auto" controls>
+  <source src="/img/ndvi-8-export-map.mp4" type="video/mp4">
+</video>
