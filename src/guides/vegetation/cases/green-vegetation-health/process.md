@@ -2,7 +2,7 @@
 case: 'green-vegetation-health'
 content: 'process'
 ---
-## Step 1: Download and install QGis
+### Step 1: Download and install QGis
 QGis is a free geographic information system application that supports viewing, editing, and analysis of geospatial data. Although it is free, it is a very professional software that is also used by satellite imagary professionals.
 
 QGis can be installed on all major operating systems. These include Mac OS, Microsoft Windows and also Linux.
@@ -11,7 +11,7 @@ Installation instructions and the download for the software itself can be found 
 
 The installation requires 15-25 minutes. After completion, you can skip to step two.
 
-## Step 2: Open QGis and start a new project
+### Step 2: Open QGis and start a new project
 Great, you've cleared the first hurdle. Now the fun begins, because we are going to edit the satellite data!
 
 The first thing to do is to start the QGis software you just installed. Now go to Project in the menu and then select `New`.
@@ -22,7 +22,7 @@ For the next steps: Depending on which operating system you are using, the displ
 
 And one more thing: Of course, I don't use the same data on the screenshots that you do. In other words, my data may look different. Don't let this confuse you.
 
-## Step 3: Open the data
+### Step 3: Open the data
 It sounds complicated to open satellite data, doesn't it? But it's not so bad, QGis does most of the work for us.
 
 It’s pretty easy to open the files: Just go to the directory where your satellite data is saved, probably in the downloads directory, select the files and drag them into the layers panel in QGis. Just take a look on my screen to know exactly where to drag them:
@@ -37,7 +37,7 @@ No you can see your data in the layers panel and on the right, big panel you can
 
 Make sure that you save your project. Do this by clicking on `Project` and then on `Save as`. A new window opens and you can choose the right directory on your PC and give your project a suitable name. Then just click on `Save`.
 
-## Step 4: Add a map for better orientation
+### Step 4: Add a map for better orientation
 So that we can orient ourselves better on the data, we put a map on top of the data. You can imagine it like Google Maps. So we can see better where we are. In technical language, such maps are called basemaps. That’s, too, super simple. So, let's add a basemap.
 
 Go to the `browser panel` (on top of the layers panel) and look for the entry `XYZ Tiles`. Click on the small arrow on the left. Now just double click on `OpenStreetMap`. 
@@ -61,7 +61,7 @@ Depending on what you want to do, you can change the opacity of the layers, the 
   <source src="/img/ndvi-4-order-layers.mp4" type="video/mp4">
 </video>
 
-## Step 5: Learn about your data and how to get the vegetation health information from it
+### Step 5: Learn about your data and how to get the vegetation health information from it
 Well, brace yourself: now comes the magic. What happens now? We will process the data so that we can see from the image where healthy green plants are, where plants are not healthy and where there are no plants.
 
 **How do we do that?**\
@@ -98,7 +98,7 @@ Cool, we have raster data. But why do you have multiple files of the same locati
 
 Enough dry theory. Now it's down to the nitty-gritty.
 
-## Step 6: Calculating the NDVI
+### Step 6: Calculating the NDVI
 Let’s get ready to rumble. What we will do now, is calculate the NDVI from the data you’ve downloaded.
 
 The formula for the NDVI is the following: (B08 - B04) / (B08 + B04)
@@ -120,7 +120,7 @@ To use this formula in QGis and with your data, you have to go the following ste
 
 That’s all. Almost.
 
-## Step 7: Bring colour into the game
+### Step 7: Bring colour into the game
 To make the data easier to understand, we want that no vegetation is brown and healthy vegetation green. For that we will colorize the grey image.
 
 1. Double-click the NDVI layer in the layers panel. A new window will appear.
@@ -138,7 +138,7 @@ To make the data easier to understand, we want that no vegetation is brown and h
 
 Well done, now it's looking much nicer, right?
 
-## Step 8: Analyze your data
+### Step 8: Analyze your data
 There are now two ways to take a closer look at the data. Either via QGis itself or you export. Both have their advantages and disadvantages. I will explain them to you in the following:
 
 **Use QGis to move around the data**\

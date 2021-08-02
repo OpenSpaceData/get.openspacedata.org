@@ -7,7 +7,7 @@
 <div class="heading">
 	<span>{step}</span>
 	<div>
-		<p class="title">{text}</p>
+		<h2 class="title">{text}</h2>
 		{#if details}
 			<!-- content here -->
 			<p>{details}</p>
