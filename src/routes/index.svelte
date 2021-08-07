@@ -121,9 +121,9 @@
     font-family: 'nowayregular', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #fff;
     padding: 20px 16px;
-    width: 100%;
+    width: 80%;
     font-size: 21px;
-    margin: 2rem 0;
+    margin: 2rem auto 2rem 0;
     box-shadow: #000 1px 2px 0;
     border: none;
     border-bottom: 2px solid #000;
