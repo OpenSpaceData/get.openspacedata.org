@@ -50,7 +50,7 @@
           </div>
         </li>
       {/if}
-      {#if $range.type}
+      {#if $location && $range.type}
         <li>
           <div id="time" />
           <div>

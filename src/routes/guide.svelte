@@ -21,6 +21,7 @@
 
   let downloads = []
   let guide
+  let api = null
 
   function formatDate(date) {
     var d = new Date(date),
@@ -54,9 +55,9 @@
     const rangeEnd = rangeType === 'latest' ? formatDate(today) : $range.endDate
 
     const apiUrl = `https://osd-fetch.fershad.workers.dev/?case=${apiCase}&from=${rangeStart}&to=${rangeEnd}&location=${$location.bbox}`
-    const api = await fetch(apiUrl).then(resp => resp.json())
+    api = await fetch(apiUrl).then(resp => resp.json())
 
-    console.log(api)
+    console.log(JSON.stringify(api))
     const {files, bands} = api
     const filesRegex = /B.{2}/g
 
@@ -76,53 +77,59 @@
 
 <div class="guide">
   <div class="wrapper flow">
-    {#if downloads.length > 0}
-      <h1>Well done! And now there' s the fun part:</h1>
-      <section class="flow">
-        <NumberedHeading text="What are we going to do?" step="?" />
-        {#if guide}
-          {@html guide.content.introduction[0]}
-        {/if}
-      </section>
-      <section class="flow">
-        <NumberedHeading
-          text="Download your satellite imagery"
-          step="1"
-          details={$location ? `For ${$location.place_name}` : null} />
-        <div class="content">
-          <p>
-            First, you have to download the imagery directly from the European Space Agency. Sounds
-            really exciting, right? But no problem for you: You just have to click the download
-            buttons: 👇
-          </p>
-          <ul class="downloads">
-            {#each downloads as download}
-              <li>
-                <a href={download[1]} download="" id="download-band-{download[0]}"
-                  >Download file: {getFilename(download[1])}</a>
-              </li>
-            {:else}
-              Loading ....
-            {/each}
-          </ul>
-        </div>
-        <div>
-          <h3>Why I have to download multiple files?</h3>
-          <p>Good question! Here comes the answer. Lorem ipsum...</p>
-        </div>
-      </section>
-      <section>
-        <NumberedHeading step="2" text="Process the images" />
-        {#if guide}
-          {@html guide.content.process[0]}
-        {/if}
-      </section>
-      <section>
-        <NumberedHeading step="3" text="Interpret the data" />
-        {#if guide}
-          {@html guide.content.interpret[0]}
-        {/if}
-      </section>
+    {#if api && api.machine_name}
+      {#if downloads.length > 0}
+        <h1>Well done! And now there' s the fun part:</h1>
+        <section class="flow">
+          <NumberedHeading text="What are we going to do?" step="?" />
+          {#if guide}
+            {@html guide.content.introduction[0]}
+          {/if}
+        </section>
+        <section class="flow">
+          <NumberedHeading
+            text="Download your satellite imagery"
+            step="1"
+            details={$location ? `For ${$location.place_name}` : null} />
+          <div class="content">
+            <p>
+              First, you have to download the imagery directly from the European Space Agency.
+              Sounds really exciting, right? But no problem for you: You just have to click the
+              download buttons: 👇
+            </p>
+            <ul class="downloads">
+              {#each downloads as download}
+                <li>
+                  <a href={download[1]} download="" id="download-band-{download[0]}"
+                    >Download file: {getFilename(download[1])}</a>
+                </li>
+              {:else}
+                Loading ....
+              {/each}
+            </ul>
+          </div>
+          <div>
+            <h3>Why I have to download multiple files?</h3>
+            <p>Good question! Here comes the answer. Lorem ipsum...</p>
+          </div>
+        </section>
+        <section>
+          <NumberedHeading step="2" text="Process the images" />
+          {#if guide}
+            {@html guide.content.process[0]}
+          {/if}
+        </section>
+        <section>
+          <NumberedHeading step="3" text="Interpret the data" />
+          {#if guide}
+            {@html guide.content.interpret[0]}
+          {/if}
+        </section>
+      {:else}
+        <h2>Data unavailable</h2>
+        <p>We can't find data that matches you search criteria.</p>
+        <a href="/" class="button">Modify criteria</a>
+      {/if}
     {:else}
       <div class="loading">
         <InlineSVG src={satellite} />
