@@ -5,4 +5,6 @@ import {
 export const category = writable();
 export const choice = writable();
 export const location = writable();
-export const range = writable({});
+export const range = writable({
+    type: 'latest'
+});
