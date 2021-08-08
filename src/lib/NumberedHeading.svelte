@@ -21,7 +21,7 @@
     gap: var(--size-400);
     align-content: center;
     justify-content: center;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 80px 1fr;
   }
 
   .step {
