@@ -57,7 +57,7 @@
     const apiUrl = `https://osd-fetch.fershad.workers.dev/?case=${apiCase}&from=${rangeStart}&to=${rangeEnd}&location=${$location.bbox}`
     api = await fetch(apiUrl).then(resp => resp.json())
 
-    console.log(JSON.stringify(api))
+    console.log(api)
     const {files, bands} = api
     const filesRegex = /B.{2}/g
 
@@ -130,6 +130,10 @@
         <p>We can't find data that matches you search criteria.</p>
         <a href="/" class="button">Modify criteria</a>
       {/if}
+    {:else if api && api.failed}
+      <h2>Data unavailable</h2>
+      <p>We can't find data that matches you search criteria.</p>
+      <a href="/" class="button">Modify criteria</a>
     {:else}
       <div class="loading">
         <InlineSVG src={satellite} />
