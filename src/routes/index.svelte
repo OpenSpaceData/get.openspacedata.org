@@ -1,3 +1,7 @@
+<script context="module">
+  export const prerender = true
+</script>
+
 <script>
   import {fly} from 'svelte/transition'
   import {choice as selected, location, range} from '$lib/store'
@@ -6,7 +10,6 @@
   import LocationSearch from '$lib/LocationSearch.svelte'
   import TimeRange from '$lib/TimeRange.svelte'
   import Progress from '$lib/Progress.svelte'
-  import {assign} from 'svelte/internal'
 
   let disableButton = true
   $: if ($selected && $location && $range.type === 'latest') {

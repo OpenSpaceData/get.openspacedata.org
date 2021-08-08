@@ -12,8 +12,8 @@ module.exports = {
     postcssImport,
     autoprefixer,
     !dev &&
-      cssnano({
-        preset: 'default'
-      })
+    cssnano({
+      preset: 'default'
+    })
   ]
 }
