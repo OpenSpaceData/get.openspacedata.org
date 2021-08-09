@@ -19,22 +19,22 @@
   .heading {
     display: grid;
     gap: var(--size-400);
-    align-content: center;
+    align-items: center;
     justify-content: center;
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 120px 1fr;
   }
 
   .step {
     display: inline-grid;
     background: var(--color-black);
     color: var(--color-white);
-    height: 80px;
-    width: 80px;
+    height: 120px;
+    width: 120px;
     text-align: center;
     place-items: center;
     font-family: var(--heading-font);
-    font-size: var(--size-800);
-    border-radius: 100%;
+    font-size: var(--size-900);
+    /* border-radius: 100%; */
     aspect-ratio: 1;
     margin: auto;
   }
@@ -78,5 +78,9 @@
   h2 {
     margin: 0;
     font-size: var(--size-800);
+  }
+
+  .step span {
+    line-height: 1;
   }
 </style>

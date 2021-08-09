@@ -40,4 +40,14 @@
     border-bottom: 1px solid var(--color-dark-grey);
     padding: 6px 35px;
   }
+
+  :global(.mapboxgl-ctrl-geocoder .suggestions) {
+    position: relative !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  :global(.mapboxgl-ctrl-geocoder .suggestions li.active) {
+    background: var(--color-accent);
+  }
 </style>
