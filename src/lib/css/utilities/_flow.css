@@ -1,3 +1,3 @@
-.flow > * + * {
+.flow > * + *:not(p) {
     margin-top: var(--flow-space, --size-600);
   }

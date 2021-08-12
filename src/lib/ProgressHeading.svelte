@@ -26,7 +26,7 @@
   {#if section === 'location'}
     <div id="location" class="step">
       <!-- pin-s+555555($location.center) -->
-      <img src="https://osd-static-map.fershad.workers.dev/?bbox={$location.bbox}" alt="" />
+      <img src="https://osd-static-map.fershad.workers.dev/?bbox={$location.bbox}" alt="" id="map" />
     </div>
   {/if}
   <div class="title">
@@ -74,13 +74,13 @@
     display: inline-grid;
     background: var(--color-black);
     color: var(--color-white);
-    height: 120px;
-    width: 120px;
+    height: 100px;
+    width: 100px;
     text-align: center;
     place-items: center;
     font-family: var(--heading-font);
     font-size: var(--size-800);
-    /* border-radius: 100%; */
+    border-radius: 100%;
     aspect-ratio: 1;
     margin: auto;
   }
@@ -126,60 +126,66 @@
     font-size: var(--size-800);
   }
 
+  #map {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+  }
+
   #vegetation {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
       url('/img/forest.jpg');
     background-size: cover;
     background-position: center;
-    height: 100%;
-    width: 100%;
+    height: 100px;
+    width: 100px;
   }
   #floods {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
       url('/img/earth.jpg');
     background-size: cover;
     background-position: center;
-    height: 100%;
-    width: 100%;
+    height: 100px;
+    width: 100px;
   }
   #wildfire {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
       url('/img/wildfire.jpg');
     background-size: cover;
     background-position: center;
-    height: 100%;
-    width: 100%;
+    height: 100px;
+    width: 100px;
   }
   #water {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
       url('/img/wave.jpg');
     background-size: cover;
     background-position: center;
-    height: 100%;
-    width: 100%;
+    height: 100px;
+    width: 100px;
   }
   #urban {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
       url('/img/city.jpg');
     background-size: cover;
     background-position: center;
-    height: 100%;
-    width: 100%;
+    height: 100px;
+    width: 100px;
   }
   #snow {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
       url('/img/iceland.jpg');
     background-size: cover;
     background-position: center;
-    height: 100%;
-    width: 100%;
+    height: 100px;
+    width: 100px;
   }
   #time {
     background-image: url('/img/calendar.png');
     background-size: contain;
     background-position: center;
-    height: 100%;
-    width: 100%;
+    height: 100px;
+    width: 100px;
     background-repeat: no-repeat;
   }
 </style>

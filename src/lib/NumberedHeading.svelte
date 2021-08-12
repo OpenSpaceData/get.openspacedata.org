@@ -28,13 +28,13 @@
     display: inline-grid;
     background: var(--color-black);
     color: var(--color-white);
-    height: 120px;
-    width: 120px;
+    height: 100px;
+    width: 100px;
     text-align: center;
     place-items: center;
     font-family: var(--heading-font);
     font-size: var(--size-900);
-    /* border-radius: 100%; */
+    border-radius: 100%;
     aspect-ratio: 1;
     margin: auto;
   }

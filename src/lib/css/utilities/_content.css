@@ -15,3 +15,20 @@ details summary {
     font-weight: bold;
     cursor: pointer;
 }
+
+details {
+    background: var(--color-accent-light);
+    padding: 5px 10px;
+}
+
+details p, details img {
+    padding: 0 20px 5px 30px;
+}
+
+summary {
+    padding: 5px 10px;
+}
+
+section > p, h3, video, ol, ul, details {
+    margin-left: 140px;
+}
