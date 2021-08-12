@@ -47,7 +47,7 @@ Go to the `browser panel` (on top of the layers panel) and look for the entry `X
 </video>
 
 <details>
-  <summary>💡 What is OpenStreetMap?</summary>
+  <summary>What is OpenStreetMap?</summary>
     OpenStreetMap, or OSM in short, is an <a href="https://www.openstreetmap.org">alternative to Google Maps</a>. The cool thing is it is completely free to use and open source. That means everybody can contribute to the maps and you can do whatever you want with the data. But that's not important for us now. If you are interested in OSM, take a look at <a href="https://www.openstreetmap.org/about">their website</a>.
 </details>
 
@@ -74,7 +74,7 @@ This all sounds very complicated, doesn't it? Let's start from the beginning. Wh
 *Note: This content is optional. If you are not interested in the theoretical background, just jump to Step 6.*
 
 <details>
-  <summary>💡 Our data from the satellite are called raster data. So, what does this mean?</summary>
+  <summary>So, what does 'raster data' mean?</summary>
     <img src="/img/ndvi-ndvi-5-raster-data.png" alt="">
     <p>Raster data is like a picture that you would take with a digital camera: at the lowest level of abstraction, it is a list of pixels with values. When you ‘zoom in’ and look closer at raster data, at some point you’ll see these discrete pixels, and it will look pixelated.</p>
     <p>Raster data is used in pictures of the Earth, like those taken by satellites - but that is just the beginning. Pixels don’t need to have colors - instead, each pixel can have a number that represents height and the raster data as a whole stores elevation data. Or pixels can store temperature or reflection data and be useful for environmental work.</p>
@@ -83,14 +83,14 @@ This all sounds very complicated, doesn't it? Let's start from the beginning. Wh
 Cool, we have raster data. But why do you have multiple files of the same location and why do they look different? That’s are different bands. On this project we use Band 4 and Band 8 of the satellite.
 
 <details>
-  <summary>💡 What are satellite bands?</summary>
+  <summary>What are satellite bands?</summary>
     The pixels in raster data are not necessarily just filled color: we call its contents ‘bands’. A normal image has three familiar bands: Red, Green, and Blue. Combined, they make a picture we’re familiar with. Some raster data can have fewer bands, like just one for elevation, or some can have a lot more - not just visible colors, but wavelengths we can’t see, like infrared and ultraviolet. When raster data is analyzed and displayed, you can combine and pick different bands to use to suit what you’re looking for.
 </details>
 
 *Sure, raster data, bands, but what the heck is the NDVI?* Great question, my friend. With the specific formula of the NDVI we will combine the Bands 4 and 8. Why? Read on:
 
 <details>
-  <summary>💡 How does the NDVI indicator work?</summary>
+  <summary>How does the NDVI indicator work?</summary>
     <p>Wikipedia says something like, “The normalized difference vegetation index (NDVI) is a simple graphical indicator that can be used to analyze satellite data, assessing whether or not the target being observed contains live green vegetation.”.</p>
     <p>The NDVI thus takes advantage of the property that healthy vegetation reflects visible red light only weakly but infrared radiation strongly, which is more or less not the case for other surface coverings such as buildings, soil or water, which is why the latter tend to receive a negative vegetation index when calculating the NDVI.</p>
     <p>The values of the NDVI can lie between -1 and +1. Positive values indicate green vegetation. The higher the positive NDVI value, the healthier the vegetation.</p>
