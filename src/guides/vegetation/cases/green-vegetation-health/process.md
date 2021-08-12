@@ -48,7 +48,7 @@ Go to the `browser panel` (on top of the layers panel) and look for the entry `X
 
 <details>
   <summary>What is OpenStreetMap?</summary>
-    OpenStreetMap, or OSM in short, is an <a href="https://www.openstreetmap.org">alternative to Google Maps</a>. The cool thing is it is completely free to use and open source. That means everybody can contribute to the maps and you can do whatever you want with the data. But that's not important for us now. If you are interested in OSM, take a look at <a href="https://www.openstreetmap.org/about">their website</a>.
+    <p>OpenStreetMap, or OSM in short, is an <a href="https://www.openstreetmap.org">alternative to Google Maps</a>. The cool thing is it is completely free to use and open source. That means everybody can contribute to the maps and you can do whatever you want with the data. But that's not important for us now. If you are interested in OSM, take a look at <a href="https://www.openstreetmap.org/about">their website</a>.</p>
 </details>
 
 **Congratulations**, you’ve added a basemap to your project. 
@@ -75,7 +75,7 @@ This all sounds very complicated, doesn't it? Let's start from the beginning. Wh
 
 <details>
   <summary>So, what does 'raster data' mean?</summary>
-    <img src="/img/ndvi-ndvi-5-raster-data.png" alt="">
+    <img src="/img/ndvi-5-raster-data.png" alt="">
     <p>Raster data is like a picture that you would take with a digital camera: at the lowest level of abstraction, it is a list of pixels with values. When you ‘zoom in’ and look closer at raster data, at some point you’ll see these discrete pixels, and it will look pixelated.</p>
     <p>Raster data is used in pictures of the Earth, like those taken by satellites - but that is just the beginning. Pixels don’t need to have colors - instead, each pixel can have a number that represents height and the raster data as a whole stores elevation data. Or pixels can store temperature or reflection data and be useful for environmental work.</p>
 </details>
@@ -84,7 +84,7 @@ Cool, we have raster data. But why do you have multiple files of the same locati
 
 <details>
   <summary>What are satellite bands?</summary>
-    The pixels in raster data are not necessarily just filled color: we call its contents ‘bands’. A normal image has three familiar bands: Red, Green, and Blue. Combined, they make a picture we’re familiar with. Some raster data can have fewer bands, like just one for elevation, or some can have a lot more - not just visible colors, but wavelengths we can’t see, like infrared and ultraviolet. When raster data is analyzed and displayed, you can combine and pick different bands to use to suit what you’re looking for.
+    <p>The pixels in raster data are not necessarily just filled color: we call its contents ‘bands’. A normal image has three familiar bands: Red, Green, and Blue. Combined, they make a picture we’re familiar with. Some raster data can have fewer bands, like just one for elevation, or some can have a lot more - not just visible colors, but wavelengths we can’t see, like infrared and ultraviolet. When raster data is analyzed and displayed, you can combine and pick different bands to use to suit what you’re looking for.</p>
 </details>
 
 *Sure, raster data, bands, but what the heck is the NDVI?* Great question, my friend. With the specific formula of the NDVI we will combine the Bands 4 and 8. Why? Read on:
