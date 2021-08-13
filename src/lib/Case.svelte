@@ -1,6 +1,7 @@
 <script>
   import {onMount} from 'svelte'
   import {choice, category} from './store'
+  import {fade, fly} from 'svelte/transition'
   // const choices = $category.cases.options;
 
   let selected
