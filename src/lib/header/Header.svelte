@@ -11,8 +11,8 @@
     </div>
     <nav>
       <ul>
-        <li><a href="/">About</a></li>
-        <li><a href="/">Help</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/help">Help</a></li>
         <li>
           <a href="https://github.com/OpenSpaceData" class="svg"><InlineSVG src={github} /></a>
         </li>

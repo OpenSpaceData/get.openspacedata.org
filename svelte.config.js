@@ -1,16 +1,18 @@
 /** @type {import('@sveltejs/kit').Config} */
 import preprocess from 'svelte-preprocess'
+import md from 'mdsvex';
 
 const config = {
-	extensions: [".svelte", ".md"],
+	extensions: [".svelte", ".md", '.svx'],
 	preprocess: [
+		md.mdsvex(),
 		preprocess({
-		  defaults: {
-			style: 'postcss'
-		  },
-		  postcss: true
+			defaults: {
+				style: 'postcss'
+			},
+			postcss: true
 		})
-	  ],
+	],
 
 	kit: {
 		// hydrate the <div id="svelte"> element in src/app.html
