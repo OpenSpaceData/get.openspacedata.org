@@ -11,6 +11,7 @@
   import LocationSearch from '$lib/LocationSearch.svelte'
   import TimeRange from '$lib/TimeRange.svelte'
   import Progress from '$lib/Progress.svelte'
+  import {goto} from '$app/navigation'
 
   let disableButton = true
   $: if ($selected && $location && $range.type === 'latest') {
@@ -91,8 +92,8 @@
       {/if}
       <a
         class="submit"
-        on:click={() => {
-          showProgress = false
+        on:click|preventDefault={() => {
+          !disableButton ? goto('/guide') : null
         }}
         href="/guide"
         class:disableButton
