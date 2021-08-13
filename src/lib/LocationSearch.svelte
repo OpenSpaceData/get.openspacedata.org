@@ -4,16 +4,22 @@
   import {Geocoder} from '@beyonk/svelte-mapbox'
 </script>
 
-<Geocoder
-  accessToken={MAPBOX_API}
-  options={{
-    types: 'country, region, postcode, district, place, locality, neighborhood, address, poi',
-  }}
-  on:result={result => {
-    location.set(result.detail.result)
-  }} />
+<div class="locationSearch">
+  <Geocoder
+    accessToken={MAPBOX_API}
+    options={{
+      types: 'country, region, postcode, district, place, locality, neighborhood, address, poi',
+    }}
+    on:result={result => {
+      location.set(result.detail.result)
+    }} />
+</div>
 
 <style>
+  .locationSearch {
+    padding-left: 140px;
+  }
+
   :global(.mapboxgl-ctrl) {
     width: 100% !important;
     max-width: 100% !important;

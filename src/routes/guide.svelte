@@ -79,7 +79,7 @@
   <div class="wrapper flow">
     {#if api && api.machine_name}
       {#if downloads.length > 0}
-        <h1>Well done! And now there' s the fun part:</h1>
+        <h1><strong>Well done! 🎉</strong><br />And now there' s the fun part:</h1>
         <section class="flow">
           <NumberedHeading text="What are we going to do?" step="?" />
           {#if guide}

@@ -3,7 +3,7 @@ a:visited {
   text-shadow: -1px -1px 0 var(--background-color),
     1px -1px 0 var(--background-color), -1px 1px 0 var(--background-color),
     1px 1px 0 var(--background-color);
-  color: currentColor;
+  color: color-primary;
   background-image: linear-gradient(
       90deg,
       var(--background-color),
@@ -15,7 +15,6 @@ a:visited {
   background-size: 0px 0.35ex, 100% 0.35ex;
   text-decoration: none;
   transition: background-size 0.4s ease-in;
-  font-weight: bold;
 }
 
 a:hover,
@@ -35,4 +34,5 @@ footer a:visited {
     linear-gradient(90deg, var(--color-accent), var(--color-accent));
   text-shadow: -1px -1px 0 var(--color-black), 1px -1px 0 var(--color-black),
     -1px 1px 0 var(--color-black), 1px 1px 0 var(--color-black);
+    color: currentColor;
 }

@@ -5,7 +5,7 @@
 </script>
 
 <div class="container">
-  <div>
+  <div class="timeRange">
     <label>
       <input
         data-shadow
@@ -31,7 +31,7 @@
   </div>
   {#if $range.type === 'range'}
     <!-- content here -->
-    <div class="content horizontal">
+    <div class="content horizontal timeRange">
       <div class="field fromDate">
         <img src="./build/assets/img/calendar.svg" alt="" />
         <label class="datepicker" for="start-date">
@@ -68,6 +68,10 @@
 </div>
 
 <style>
+  .timeRange {
+    padding-left: 140px;
+  }
+
   div.horizontal {
     display: flex;
     align-items: center;

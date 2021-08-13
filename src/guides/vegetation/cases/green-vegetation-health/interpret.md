@@ -3,12 +3,12 @@ case: 'green-vegetation-health'
 content: 'interpret'
 ---
 
-**How to read the colors:**\
+**How to read the colors:** \
 Brown to white colored areas correspond to empty areas like rocks, sand, buildings or dead plants. Moderate values, mostly light green, represent shrubs and meadows, while bright green areas indicate healthy vegetation.
 
 ![](/img/ndvi-legend.png)
 
-**Dive deeper into this topic:**\
+**Dive deeper into this topic:** \
 You should never blindly rely on data. They know no context. That means the correct reading and interpretation of the data is up to you. Therefore, you should familiarize yourself with the NDVI, its strengths and weaknesses, before publishing your findings or making decisions based on them.
 
 Here we have some further resources for you:
