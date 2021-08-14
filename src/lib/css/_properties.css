@@ -7,7 +7,7 @@
 
 	--color-primary: #1947E5;
 	--color-accent: #FFBD12;   
-    --color-accent-light: rgba(255,189,18,0.1);
+    --color-accent-light: rgb(252, 221, 143);
 
     --dark-text-color: var(--color-black);
     --light-text-color: var(--color-white);

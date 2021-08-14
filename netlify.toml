@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "build/publish/"
+  functions = "build/functions/"
+
+[[headers]]
+  for ="/*"
+  [headers.values]
+    Permissions-Policy = "interest-cohort=()"

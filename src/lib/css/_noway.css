@@ -1,52 +1,52 @@
 @font-face {
     font-family: "nowayregular";
-    src: url("/fonts/noway-regular-webfont.eot");
-    src: url("/fonts/noway-regular-webfont.eot?#iefix")
-        format("embedded-opentype"),
-      url("/fonts/noway-regular-webfont.woff2") format("woff2"),
-      url("/fonts/noway-regular-webfont.woff") format("woff"),
+    src: url("/fonts/noway-regular-webfont.woff2") format("woff2"),
+    url("/fonts/noway-regular-webfont.woff") format("woff"),
+    url("/fonts/noway-regular-webfont.eot") format("embedded-opentype"),
+    url("/fonts/noway-regular-webfont.eot?#iefix") format("embedded-opentype"),
       url("/fonts/noway-regular-webfont.ttf") format("truetype"),
       url("/fonts/noway-regular-webfont.svg#nowayregular") format("svg");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
     font-family: "nowaymedium";
-    src: url("/fonts/noway-medium-webfont.eot");
-    src: url("/fonts/noway-medium-webfont.eot?#iefix")
-        format("embedded-opentype"),
-      url("/fonts/noway-medium-webfont.woff2") format("woff2"),
-      url("/fonts/noway-medium-webfont.woff") format("woff"),
+    src: url("/fonts/noway-medium-webfont.woff2") format("woff2"),
+    url("/fonts/noway-medium-webfont.woff") format("woff"),
+    url("/fonts/noway-medium-webfont.eot") format("embedded-opentype"),
+    url("/fonts/noway-medium-webfont.eot?#iefix") format("embedded-opentype"),
       url("/fonts/noway-medium-webfont.ttf") format("truetype"),
       url("/fonts/noway-medium-webfont.svg#nowayregular") format("svg");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
     font-family: "nowaybold";
-    src: url("/fonts/noway-bold-webfont.eot");
-    src: url("/fonts/noway-bold-webfont.eot?#iefix")
-        format("embedded-opentype"),
-      url("/fonts/noway-bold-webfont.woff2") format("woff2"),
-      url("/fonts/noway-bold-webfont.woff") format("woff"),
+    src: url("/fonts/noway-bold-webfont.woff2") format("woff2"),
+    url("/fonts/noway-bold-webfont.woff") format("woff"),
+    url("/fonts/noway-bold-webfont.eot") format("embedded-opentype"),
+    url("/fonts/noway-bold-webfont.eot?#iefix") format("embedded-opentype"),
       url("/fonts/noway-bold-webfont.ttf") format("truetype"),
       url("/fonts/noway-bold-webfont.svg#nowayregular") format("svg");
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
     font-family: "nowayitalic";
-    src: url("/fonts/noway_regular_italic-webfont.eot");
-    src: url("/fonts/noway_regular_italic-webfont.eot?#iefix")
-        format("embedded-opentype"),
-      url("/fonts/noway_regular_italic-webfont.woff2") format("woff2"),
-      url("/fonts/noway_regular_italic-webfont.woff") format("woff"),
+    src: url("/fonts/noway_regular_italic-webfont.woff2") format("woff2"),
+    url("/fonts/noway_regular_italic-webfont.woff") format("woff"),
+    url("/fonts/noway_regular_italic-webfont.eot") format("embedded-opentype"),
+    url("/fonts/noway_regular_italic-webfont.eot?#iefix") format("embedded-opentype"),
       url("/fonts/noway_regular_italic-webfont.ttf") format("truetype"),
       url("/fonts/noway_regular_italic-webfont.svg#nowayregular")
         format("svg");
     font-weight: normal;
     font-style: italic;
+    font-display: swap;
   }

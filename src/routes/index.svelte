@@ -12,6 +12,7 @@
   import TimeRange from '$lib/TimeRange.svelte'
   import Progress from '$lib/Progress.svelte'
   import {goto} from '$app/navigation'
+  import {toast} from '@zerodevx/svelte-toast'
 
   let disableButton = true
   $: if ($selected && $location && $range.type === 'latest') {
@@ -30,6 +31,29 @@
 
   $: $selected ? (progress = 2) : (progress = 1)
   $: $location ? (progress = 3) : (progress = 2)
+
+  const checkForm = () => {
+    if (!$selected) {
+      toast.push('Please first select a category')
+      return
+    }
+    if (!$location) {
+      toast.push('Please choose a location')
+      return
+    }
+    if ($range.type === 'range' && !$range.startDate && !$range.endDate) {
+      toast.push('Please set a start and end date')
+      return
+    }
+    if ($range.type === 'range' && !$range.startDate) {
+      toast.push('Please set a start date')
+      return
+    }
+    if ($range.type === 'range' && !$range.endDate) {
+      toast.push('Please set an end date')
+      return
+    }
+  }
 </script>
 
 {#if $selected && showProgress}
@@ -93,6 +117,7 @@
       <a
         class="submit"
         on:click|preventDefault={() => {
+          checkForm()
           !disableButton ? goto('/guide') : null
         }}
         href="/guide"
@@ -116,6 +141,17 @@
 </section>
 
 <style>
+  :global(:root) {
+    --toastContainerTop: auto;
+    --toastContainerRight: var(--size-400);
+    --toastContainerBottom: calc(var(--size-900) * 2);
+    --toastContainerLeft: auto;
+    --toastBackground: var(--color-accent-light);
+    --toastProgressBackground: var(--color-accent);
+    --toastColor: var(--dark-text-color);
+    --toastWidth: 100%;
+  }
+
   .narrow {
     max-width: 45rem;
     display: flex;
