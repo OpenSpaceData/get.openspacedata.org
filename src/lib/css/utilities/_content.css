@@ -29,6 +29,6 @@ summary {
     padding: 5px 10px;
 }
 
-section > p, h3, video, ol, ul, details {
+section p:not(details > p), .content > p, h3, video, ol, ul, details {
     margin-left: 140px;
 }

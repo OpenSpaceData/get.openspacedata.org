@@ -10,7 +10,7 @@
     <h2>{text}</h2>
     {#if details}
       <!-- content here -->
-      <p>{details}</p>
+      <span class="details">{details}</span>
     {/if}
   </div>
 </div>
@@ -82,5 +82,9 @@
 
   .step span {
     line-height: 1;
+  }
+
+  span.details {
+    font-style: italic;
   }
 </style>
