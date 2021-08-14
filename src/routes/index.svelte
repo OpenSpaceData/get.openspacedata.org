@@ -12,6 +12,7 @@
   import TimeRange from '$lib/TimeRange.svelte'
   import Progress from '$lib/Progress.svelte'
   import {goto} from '$app/navigation'
+  import {toast} from '@zerodevx/svelte-toast'
 
   let disableButton = true
   $: if ($selected && $location && $range.type === 'latest') {
@@ -30,6 +31,50 @@
 
   $: $selected ? (progress = 2) : (progress = 1)
   $: $location ? (progress = 3) : (progress = 2)
+
+  const checkForm = () => {
+    if (!$selected) {
+      toast.push('Select a category', {
+        theme: {
+          '--toastBackground': '#F56565',
+          '--toastProgressBackground': '#C53030',
+        },
+      })
+    }
+    if (!$location) {
+      toast.push('Choose a location', {
+        theme: {
+          '--toastBackground': '#F56565',
+          '--toastProgressBackground': '#C53030',
+        },
+      })
+    }
+    if ($range.type === 'range' && !$range.startDate && !$range.endDate) {
+      toast.push('Set a start and end date', {
+        theme: {
+          '--toastBackground': '#F56565',
+          '--toastProgressBackground': '#C53030',
+        },
+      })
+      return
+    }
+    if ($range.type === 'range' && !$range.startDate) {
+      toast.push('Set a start date', {
+        theme: {
+          '--toastBackground': '#F56565',
+          '--toastProgressBackground': '#C53030',
+        },
+      })
+    }
+    if ($range.type === 'range' && !$range.endDate) {
+      toast.push('Set an end date', {
+        theme: {
+          '--toastBackground': '#F56565',
+          '--toastProgressBackground': '#C53030',
+        },
+      })
+    }
+  }
 </script>
 
 {#if $selected && showProgress}
@@ -93,6 +138,7 @@
       <a
         class="submit"
         on:click|preventDefault={() => {
+          checkForm()
           !disableButton ? goto('/guide') : null
         }}
         href="/guide"
