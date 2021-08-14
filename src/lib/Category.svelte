@@ -34,7 +34,7 @@
       {/each}
     </div>
   {:else}
-    <div out:fade|local={{duration: 150}} in:fade|local={{delay: 150}}>
+    <div out:fade={{duration: 150}} in:fade={{delay: 150}}>
       {#if choosing}
         <!-- content here -->
         <Back bind:choosing />
