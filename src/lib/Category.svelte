@@ -28,7 +28,7 @@
             choosing = true
             setChoice(cat)
           }}>
-          <img src={cat.image} alt=" " />
+          <img src={cat.image} alt=" " height="206" width="252" />
           <span>{cat.text}</span>
         </button>
       {/each}
@@ -92,6 +92,7 @@
     height: 100%;
     object-fit: cover;
     z-index: 1;
+    aspect-ratio: 640/427;
   }
 
   span {

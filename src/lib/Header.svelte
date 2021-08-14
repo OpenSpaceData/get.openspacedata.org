@@ -7,7 +7,7 @@
 <header>
   <div class="wrapper">
     <div class="logo">
-      <a href="/"><img src="/img/openspacedata-logo.png" alt="" /></a>
+      <a href="/"><img src="/img/openspacedata-logo.png" alt="" height="64" width="140" /></a>
     </div>
     <nav>
       <ul>
@@ -48,6 +48,7 @@
 
   header .logo img {
     max-height: 4rem;
+    aspect-ratio: 140/64;
   }
 
   /* header .wrapper {
