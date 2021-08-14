@@ -72,14 +72,22 @@ id: 'barren-soil'
 ---
 ```
 
+## Other pages
+The About and Help pages can be found inside the `src/routes` folder. Content can be added using markdown, or Svelte components. The pages are in `.svx` files, and are compiled using [mdsvex](https://mdsvex.com/).
 
-The planned guides for the `Beta` version:
-![Planned use cases](/use_cases.png)
+## Styles
+Global CSS is found in the `src/lib/css` folder. Styles are organised by utility type, making it easier to find and update certain styles. When a new `.css` file is added here, it should be imported into `src/app.css` in order to be compiled.
 
+Alternately, global CSS styles can be added directly to `src/app.css` file.
+
+## ENV Variables
+This project uses Mapbox for geocoding & static map images. A Mapbox API key should be added in a `.env` file using the `VITE_MAPBOX_API` variable name. This environment variable is exposed through the `src/lib/data/mapbox.js` file. In order to use the API key in a Svelte component, you must first import it using `import {MAPBOX_API} from '$lib/data/mapbox'`.
 ## API data
 
 The file `api-respond.json` is located in the `static/sample` folder. It is an example of an API respond by the [OpenSpaceData API](https://github.com/OpenSpaceData/api.openspacedata.org).
 
+The planned guides for the `Beta` version:
+![Planned use cases](/use_cases.png)
 ## Funding
 
 This project is funded by the [German Federal Ministry of Education and Research](http://bmbf.de)
