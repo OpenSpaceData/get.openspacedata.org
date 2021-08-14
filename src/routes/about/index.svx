@@ -1,10 +1,24 @@
+---
+---
+
 <script context="module">
   export const prerender = true
+</script>
+
+<script>
+  import Follow from '$lib/Follow.svelte'
+  import Fund from '$lib/Fund.svelte'
 </script>
 
 <svelte:head>
   <title>About OpenSpaceData</title>
 </svelte:head>
+
+<style>
+  ul {
+    margin-left: 0;
+  }
+  </style>
 
 # About OpenSpaceData
 
@@ -22,3 +36,17 @@ Get to know more about [our approach](https://www.openspacedata.org/our-approach
 >>> We believe that open satellite data should be accessible to everyone - without barriers. We want to help people get easy access to open satellite data and empower them to draw the right insights.
 
 Read more about the importance of openly available Earth observation data on [reset.org](https://en.reset.org/blog/outer-space-all-just-how-accessible-esas-satellite-data-01262021).
+
+## Satellite data is only for experts?
+Nope, with this project, we are explicitly not addressing developers or scientists. We want to offer something specifically for non-specialist users. So, many more people can benefit from them.
+
+- 📚 students & teacher
+- ✏️ journalists
+- 🔥 climate activists
+- ⛑ humanitarian helpers
+- 👱‍♀️ all citizens
+
+We will provide examples and libraries with which you can quickly get started without becoming an expert in the analysis of satellite data. More information on how you can use OpenSpaceData.org for you and your cause will follow.
+
+<Follow />
+<Fund />

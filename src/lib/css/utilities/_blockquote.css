@@ -1,0 +1,4 @@
+blockquote p {
+    border-left: var(--size-400) solid gold;
+  padding-left: 1rem;
+}
