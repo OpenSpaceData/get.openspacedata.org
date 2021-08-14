@@ -22,7 +22,7 @@
 </svelte:head>
 
 <Header />
-<SvelteToast />
+<SvelteToast options={{reversed: true, intro: {y: 192}}} />
 <main class="flow">
   <slot />
 </main>

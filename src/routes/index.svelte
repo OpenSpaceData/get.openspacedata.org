@@ -34,45 +34,24 @@
 
   const checkForm = () => {
     if (!$selected) {
-      toast.push('Select a category', {
-        theme: {
-          '--toastBackground': '#F56565',
-          '--toastProgressBackground': '#C53030',
-        },
-      })
+      toast.push('Please first select a category')
+      return
     }
     if (!$location) {
-      toast.push('Choose a location', {
-        theme: {
-          '--toastBackground': '#F56565',
-          '--toastProgressBackground': '#C53030',
-        },
-      })
+      toast.push('Please choose a location')
+      return
     }
     if ($range.type === 'range' && !$range.startDate && !$range.endDate) {
-      toast.push('Set a start and end date', {
-        theme: {
-          '--toastBackground': '#F56565',
-          '--toastProgressBackground': '#C53030',
-        },
-      })
+      toast.push('Please set a start and end date')
       return
     }
     if ($range.type === 'range' && !$range.startDate) {
-      toast.push('Set a start date', {
-        theme: {
-          '--toastBackground': '#F56565',
-          '--toastProgressBackground': '#C53030',
-        },
-      })
+      toast.push('Please set a start date')
+      return
     }
     if ($range.type === 'range' && !$range.endDate) {
-      toast.push('Set an end date', {
-        theme: {
-          '--toastBackground': '#F56565',
-          '--toastProgressBackground': '#C53030',
-        },
-      })
+      toast.push('Please set an end date')
+      return
     }
   }
 </script>
@@ -162,6 +141,17 @@
 </section>
 
 <style>
+  :global(:root) {
+    --toastContainerTop: auto;
+    --toastContainerRight: var(--size-400);
+    --toastContainerBottom: calc(var(--size-900) * 2);
+    --toastContainerLeft: auto;
+    --toastBackground: var(--color-accent-light);
+    --toastProgressBackground: var(--color-accent);
+    --toastColor: var(--dark-text-color);
+    --toastWidth: 100%;
+  }
+
   .narrow {
     max-width: 45rem;
     display: flex;
