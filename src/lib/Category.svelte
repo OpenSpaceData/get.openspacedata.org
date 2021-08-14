@@ -21,7 +21,7 @@
 <div>
   {#if !choosing && categories}
     <!-- content here -->
-    <div class="auto-grid categories" out:fade={{duration: 150}} in:fade={{delay: 150}}>
+    <div class="auto-grid categories" out:fade|local={{duration: 150}} in:fade|local={{delay: 150}}>
       {#each categories as cat}
         <button
           id={cat.id}
@@ -34,7 +34,7 @@
       {/each}
     </div>
   {:else}
-    <div out:fade={{duration: 150}} in:fade={{delay: 150}}>
+    <div out:fade|local={{duration: 150}} in:fade|local={{delay: 150}}>
       {#if choosing}
         <!-- content here -->
         <Back bind:choosing />
