@@ -24,12 +24,12 @@
     <div class="auto-grid categories" out:fade|local={{duration: 150}} in:fade|local={{delay: 150}}>
       {#each categories as cat}
         <button
-          id={cat.id}
           on:click={() => {
             choosing = true
             setChoice(cat)
           }}>
-          {cat.text}
+          <img src={cat.image} alt=" " />
+          <span>{cat.text}</span>
         </button>
       {/each}
     </div>
@@ -80,6 +80,33 @@
     color: var(--light-text-color);
     text-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
     text-align: left;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  span {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    padding: var(--size-300);
+    font-size: var(--size-600);
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.7)
+    );
+    text-shadow: rgb(0 0 0 / 50%) 0 0 5px;
   }
 
   #vegetation {
