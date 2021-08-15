@@ -9,13 +9,13 @@
   <title>OpenSpaceData</title>
   <link
     rel="preload"
-    href="/fonts/noway-regular-webfont.woff2"
+    href="/font/noway-regular-webfont.woff2"
     as="font"
     type="font/woff2"
     crossorigin="anonymous" />
   <link
     rel="preload"
-    href="/fonts/noway-bold-webfont.woff2"
+    href="/font/noway-bold-webfont.woff2"
     as="font"
     type="font/woff2"
     crossorigin="anonymous" />
