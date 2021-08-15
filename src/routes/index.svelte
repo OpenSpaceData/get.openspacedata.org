@@ -2,19 +2,22 @@
   export const prerender = true
   export async function load({page, fetch, session, context}) {
     const categoriesURL = `/categories.json`
-    const res = await fetch(categoriesURL)
+    const casesURL = `/cases.json`
+    const categories = await fetch(categoriesURL)
+    const cases = await fetch(casesURL)
 
-    if (res.ok) {
+    if (categories.ok && cases.ok) {
       return {
         props: {
-          categories: await res.json(),
+          categories: await categories.json(),
+          cases: await cases.json(),
         },
       }
     }
 
     return {
       status: res.status,
-      error: new Error(`Could not load ${url}`),
+      error: new Error(error),
     }
   }
 </script>
@@ -32,6 +35,7 @@
   import {toast} from '@zerodevx/svelte-toast'
 
   export let categories
+  export let cases
 
   let disableButton = true
   $: if ($selected && $location && $range.type === 'latest') {
@@ -95,7 +99,7 @@
     {#if !$selected}
       <div class="full-width" transition:slide>
         <div class="wrapper">
-          <Caterogy {categories} />
+          <Caterogy {categories} {cases} />
         </div>
       </div>
     {/if}

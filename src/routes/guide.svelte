@@ -1,3 +1,24 @@
+<script context="module">
+  export const prerender = true
+  export async function load({page, fetch, session, context}) {
+    const url = `/guides.json`
+    const res = await fetch(url)
+
+    if (res.ok) {
+      return {
+        props: {
+          guides: await res.json(),
+        },
+      }
+    }
+
+    return {
+      status: res.status,
+      error: new Error(error),
+    }
+  }
+</script>
+
 <script>
   import {onMount} from 'svelte'
   import {choice as selected, location, range} from '$lib/store'
@@ -5,7 +26,8 @@
   import InlineSVG from 'svelte-inline-svg'
   import satellite from '$lib/svg/satellite.svg'
 
-  console.log($selected)
+  export let guides
+  const guide = guides.find(d => d.value === $selected.caseFolder)
 
   const rangeType = $range.type
   /*
@@ -20,7 +42,6 @@
   }
 
   let downloads = []
-  let guide
   let api = null
 
   function formatDate(date) {
@@ -37,9 +58,6 @@
 
   onMount(async () => {
     // Get the content for the guide
-    guide = await fetch('/guides.json')
-      .then(resp => resp.json())
-      .then(data => data.find(d => d.value === $selected.caseFolder))
 
     // Could zip files in a function:
     // https://gist.github.com/noelvo/4502eea719f83270c8e9

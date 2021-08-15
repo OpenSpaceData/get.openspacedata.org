@@ -1,5 +1,4 @@
 <script>
-  import {onMount} from 'svelte'
   import {category} from './store'
   import {fade, fly} from 'svelte/transition'
   // import { categories } from './data/categories';
@@ -12,6 +11,7 @@
 
   let choosing = false
   export let categories
+  export let cases
 </script>
 
 <div>
@@ -36,7 +36,7 @@
         <Back bind:choosing />
       {/if}
       <!-- else content here -->
-      <Case />
+      <Case choices={cases} />
     </div>
   {/if}
 </div>

@@ -1,5 +1,4 @@
 <script>
-  import {onMount} from 'svelte'
   import {choice, category} from './store'
   import {fade, fly} from 'svelte/transition'
   // const choices = $category.cases.options;
@@ -14,21 +13,16 @@
     choice.set(option)
   }
 
-  let choices
-  onMount(async () => {
-    // Get the content for the guide
-    choices = await fetch('/cases.json')
-      .then(resp => resp.json())
-      .then(data => data.filter(d => d.parentFolder === $category.parentFolder))
-  })
+  export let choices
+  const cases = choices.filter(d => d.parentFolder === $category.parentFolder)
 </script>
 
 <div class="container">
   <div class="content">
     <!-- <p>{$category.cases.intro}</p> -->
-    {#if choices}
+    {#if cases}
       <!-- content here -->
-      {#each choices as choice, index}
+      {#each cases as choice, index}
         <ul class="indices">
           <li data-shadow class:selected={selected === index}>
             <div class="task">
