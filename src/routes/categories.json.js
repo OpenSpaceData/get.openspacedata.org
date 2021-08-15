@@ -11,9 +11,7 @@ export async function get({
         import.meta.glob(`/src/guides/*/category.md`);
 
     let categories = [];
-    const files = []
     for (const [filePath, resolver] of Object.entries(modules)) {
-        files.push(filePath)
         const pathArray = filePath.split('/')
         const parentFolder = pathArray[pathArray.length - 2]
         const category = fs.readFileSync(path.join(__dirname, filePath), "utf-8")
@@ -30,10 +28,6 @@ export async function get({
     }
 
     return {
-        body: {
-            categories,
-            modules,
-            files
-        }
+        body: categories
     };
 }

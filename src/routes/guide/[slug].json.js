@@ -24,8 +24,30 @@ export function get({
         }
     }
 
+
+    guides.map(filePath => {
+        const guide = fs.readFileSync(path.join(__dirname, filePath), "utf-8")
+
+        // Parse frontmatter
+        const {
+            data,
+            content
+        } = grayMatter(guide)
+
+        const renderer = new marked.Renderer();
+        const html = marked(content, {
+            renderer
+        })
+
+        guideData.push({
+            case: data.case,
+            content: data.content,
+            html
+        })
+    })
+
     return {
-        body: guides
+        body: guidesData
     }
 
 }
