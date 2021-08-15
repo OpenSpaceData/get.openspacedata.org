@@ -4,27 +4,6 @@ import marked from 'marked';
 import grayMatter from 'gray-matter'
 const __dirname = path.resolve(path.dirname(''));
 
-const process = (file) => {
-    const guide = fs.readFileSync(path.join(__dirname, file), "utf-8")
-
-    // Parse frontmatter
-    const {
-        data,
-        content
-    } = grayMatter(guide)
-
-    const renderer = new marked.Renderer();
-    const html = marked(content, {
-        renderer
-    })
-
-    return {
-        case: data.case,
-        content: data.content,
-        html
-    }
-}
-
 export function get({
     params
 }) {
