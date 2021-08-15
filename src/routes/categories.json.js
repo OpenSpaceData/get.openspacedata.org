@@ -21,10 +21,7 @@ export async function get({
             data
         } = grayMatter(category)
 
-        categories.push({
-            ...data,
-            parentFolder
-        })
+        categories.push(category)
     }
 
     return {
