@@ -141,7 +141,7 @@
         class="submit"
         on:click|preventDefault={() => {
           checkForm()
-          !disableButton ? goto('/guide') : null
+          !disableButton ? goto(`/guide/${$selected.id}`) : null
         }}
         href="/guide"
         class:disableButton
