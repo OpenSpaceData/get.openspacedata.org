@@ -1,4 +1,8 @@
 
+<script context="module">
+  export const prerender = true
+</script>
+
 <svelte:head>
   <title>Help - OpenSpaceData</title>
 </svelte:head>

@@ -1,5 +1,9 @@
 ---
 ---
+<script context="module">
+  export const prerender = true
+</script>
+
 <script>
   import Follow from '$lib/Follow.svelte'
   import Fund from '$lib/Fund.svelte'
