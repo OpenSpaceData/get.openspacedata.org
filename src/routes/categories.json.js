@@ -30,8 +30,10 @@ export async function get({
     }
 
     return {
-        body: categories,
-        modules,
-        files
+        body: {
+            categories,
+            modules,
+            files
+        }
     };
 }
