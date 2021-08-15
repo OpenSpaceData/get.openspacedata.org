@@ -1,9 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-import marked from 'marked';
-import grayMatter from 'gray-matter'
-const __dirname = path.resolve(path.dirname(''));
-
 const mode = process.env.NODE_ENV
 const guidesPath = mode === 'development' ? 'http://localhost:3000/guides.json' : 'https://focused-morse-24be4b.netlify.app/guides.json'
 
