@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
   publish = "build/"
-  functions = "build/functions/"
+  functions = "functions/"
 
 [[headers]]
   for ="/*"
