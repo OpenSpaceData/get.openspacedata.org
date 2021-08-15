@@ -14,9 +14,6 @@ export function get({
     const modules =
         import.meta.glob(`/src/guides/**/cases/**/*.md`);
 
-    return {
-        body: modules
-    }
 
     let guides = [];
     let guideData = [];
@@ -27,34 +24,8 @@ export function get({
         }
     }
 
-    guides.map(filePath => {
-        const guide = fs.readFileSync(path.join(__dirname, filePath), "utf-8")
-
-        // Parse frontmatter
-        const {
-            data,
-            content
-        } = grayMatter(guide)
-
-        const renderer = new marked.Renderer();
-        const html = marked(content, {
-            renderer
-        })
-
-        guideData.push({
-            case: data.case,
-            content: data.content,
-            html
-        })
-    })
-
-    const content = guideData.reduce((acc, key) => ({
-        ...acc,
-        [key.content]: [key.html]
-    }), {})
-
-
     return {
-        body: modules
+        body: guides
     }
+
 }
