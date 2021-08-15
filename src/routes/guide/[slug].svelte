@@ -2,7 +2,6 @@
   import {base} from '$app/paths'
   export async function load({page, fetch}) {
     const slug = page.params.slug
-    console.log(`${base}/guide/${slug}.json`)
     const guide = await fetch(`${base}/guide/${slug}.json`).then(r => r.json())
     return {
       props: {guide},
@@ -18,6 +17,7 @@
   import satellite from '$lib/svg/satellite.svg'
 
   export let guide
+  console.log(guide)
 
   const rangeType = $range.type
   /*
@@ -65,7 +65,7 @@
     const apiUrl = `https://osd-fetch.fershad.workers.dev/?case=${apiCase}&from=${rangeStart}&to=${rangeEnd}&location=${$location.bbox}`
     api = await fetch(apiUrl).then(resp => resp.json())
 
-    console.log(api)
+    // console.log(api)
     const {files, bands} = api
     const filesRegex = /B.{2}/g
 
@@ -91,7 +91,7 @@
         <section class="flow">
           <NumberedHeading text="What are we going to do?" step="?" />
           {#if guide}
-            {@html guide.introduction[0]}
+            {@html guide.content.introduction[0]}
           {/if}
         </section>
         <section class="flow">
@@ -124,13 +124,13 @@
         <section>
           <NumberedHeading step="2" text="Process the images" />
           {#if guide}
-            {@html guide.process[0]}
+            {@html guide.content.process[0]}
           {/if}
         </section>
         <section>
           <NumberedHeading step="3" text="Interpret the data" />
           {#if guide}
-            {@html guide.interpret[0]}
+            {@html guide.content.interpret[0]}
           {/if}
         </section>
       {:else}

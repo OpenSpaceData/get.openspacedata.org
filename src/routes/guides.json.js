@@ -3,6 +3,8 @@ import path from 'path';
 import marked from 'marked';
 import grayMatter from 'gray-matter'
 const __dirname = path.resolve(path.dirname(''));
+const mode = process.env.NODE_ENV
+const guidesPath = mode === 'development' ? __dirname : '/opt/build/repo'
 
 const groupBy = key => array =>
     array.reduce((objectsByKeyValue, obj) => {
@@ -19,7 +21,7 @@ export async function get({
 
     let guides = [];
     for (const [filePath, resolver] of Object.entries(modules)) {
-        const guide = fs.readFileSync(path.join('/opt/build/repo', filePath), "utf-8")
+        const guide = fs.readFileSync(path.join(guidesPath, filePath), "utf-8")
 
         // Parse frontmatter
         const {

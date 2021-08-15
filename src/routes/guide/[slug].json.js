@@ -4,55 +4,23 @@ import marked from 'marked';
 import grayMatter from 'gray-matter'
 const __dirname = path.resolve(path.dirname(''));
 
-export function get({
+const mode = process.env.NODE_ENV
+const guidesPath = mode === 'development' ? 'http://localhost:3000/guides.json' : 'https://focused-morse-24be4b.netlify.app/guides.json'
+
+export async function get({
     params
 }) {
     const {
         slug
     } = params;
 
-    const modules =
-        import.meta.glob(`/src/guides/**/cases/**/*.md`);
-
-
-    let guides = [];
-    let guideData = [];
-    for (const [filePath, resolver] of Object.entries(modules)) {
-        const pathArray = filePath.split('/')
-        if (pathArray[5] === slug && pathArray[6] !== 'case.md') {
-            guides.push(filePath)
-        }
+    const guides = await fetch(guidesPath).then(res => res.json())
+    const content = guides.filter(guide => guide.value === slug)
+    const guideContent = {
+        ...content[0]
     }
 
-
-    guides.map(filePath => {
-        const guide = fs.readFileSync(path.join('/opt/build/repo', filePath), "utf-8")
-
-        // Parse frontmatter
-        const {
-            data,
-            content
-        } = grayMatter(guide)
-
-        const renderer = new marked.Renderer();
-        const html = marked(content, {
-            renderer
-        })
-
-        guideData.push({
-            case: data.case,
-            content: data.content,
-            html
-        })
-    })
-
-    const content = guideData.reduce((acc, key) => ({
-        ...acc,
-        [key.content]: [key.html]
-    }), {})
-
-
     return {
-        body: content
+        body: guideContent
     }
 }
