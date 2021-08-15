@@ -108,7 +108,7 @@
               {/each}
             </ul>
           </div>
-          <div>
+          <div class="content">
             <h3>Why I have to download multiple files?</h3>
             <p>Good question! Here comes the answer. Lorem ipsum...</p>
           </div>

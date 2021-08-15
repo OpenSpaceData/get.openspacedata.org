@@ -7,3 +7,4 @@ node_modules
 static/fonts
 static/img/*.jpg
 .vscode
+package-lock.json
