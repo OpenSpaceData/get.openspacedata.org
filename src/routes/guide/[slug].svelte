@@ -17,7 +17,6 @@
   import satellite from '$lib/svg/satellite.svg'
 
   export let guide
-  console.log(guide)
 
   const rangeType = $range.type
   /*
