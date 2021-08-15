@@ -168,7 +168,7 @@
               )
             : null
         }}
-        href="/guide"
+        href="#"
         class:disableButton
         >Alright! Get the data and start analyzing
         {#if !disableButton}
