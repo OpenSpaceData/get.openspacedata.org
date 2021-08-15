@@ -28,26 +28,37 @@ export function get({
     guides.map(filePath => {
         const guide = fs.readFileSync(path.join(__dirname, filePath), "utf-8")
 
+        guidesData.push(guide)
+
         // Parse frontmatter
-        const {
-            data,
-            content
-        } = grayMatter(guide)
+        // const {
+        //     data,
+        //     content
+        // } = grayMatter(guide)
 
-        const renderer = new marked.Renderer();
-        const html = marked(content, {
-            renderer
-        })
+        // const renderer = new marked.Renderer();
+        // const html = marked(content, {
+        //     renderer
+        // })
 
-        guideData.push({
-            case: data.case,
-            content: data.content,
-            html
-        })
+        // guideData.push({
+        //     case: data.case,
+        //     content: data.content,
+        //     html
+        // })
     })
 
     return {
         body: guidesData
     }
 
+    const content = guideData.reduce((acc, key) => ({
+        ...acc,
+        [key.content]: [key.html]
+    }), {})
+
+
+    return {
+        body: modules
+    }
 }
