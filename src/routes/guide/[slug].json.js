@@ -1,5 +1,5 @@
 const mode = process.env.NODE_ENV
-const guidesPath = mode === 'development' ? 'http://localhost:3000/guides.json' : 'https://focused-morse-24be4b.netlify.app/guides.json'
+const guidesPath = mode === 'development' ? 'http://localhost:3000/guides.json' : 'https://openspacedata.netlify.app/guides.json'
 
 export async function get({
     params
