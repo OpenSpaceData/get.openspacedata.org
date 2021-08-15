@@ -1,5 +1,22 @@
 <script context="module">
   export const prerender = true
+  export async function load({page, fetch, session, context}) {
+    const categoriesURL = `/categories.json`
+    const res = await fetch(categoriesURL)
+
+    if (res.ok) {
+      return {
+        props: {
+          categories: await res.json(),
+        },
+      }
+    }
+
+    return {
+      status: res.status,
+      error: new Error(`Could not load ${url}`),
+    }
+  }
 </script>
 
 <script>
@@ -13,6 +30,8 @@
   import Progress from '$lib/Progress.svelte'
   import {goto} from '$app/navigation'
   import {toast} from '@zerodevx/svelte-toast'
+
+  export let categories
 
   let disableButton = true
   $: if ($selected && $location && $range.type === 'latest') {
@@ -76,7 +95,7 @@
     {#if !$selected}
       <div class="full-width" transition:slide>
         <div class="wrapper">
-          <Caterogy />
+          <Caterogy {categories} />
         </div>
       </div>
     {/if}

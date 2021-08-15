@@ -11,11 +11,7 @@
   }
 
   let choosing = false
-  let categories
-  onMount(async () => {
-    // Get the content for the guide
-    categories = await fetch('/categories.json').then(resp => resp.json())
-  })
+  export let categories
 </script>
 
 <div>
