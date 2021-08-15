@@ -32,6 +32,8 @@
   const filesRegex = /B.{2}/g
   // let downloads
 
+  import {toast} from '@zerodevx/svelte-toast'
+
   import {onMount} from 'svelte'
   import {choice as selected, location, range} from '$lib/store'
   import NumberedHeading from '$lib/NumberedHeading.svelte'
@@ -74,6 +76,7 @@
   let getFileSizes
 
   onMount(async () => {
+    cantCopy = window.navigator.clipboard ? false : true
     //   // Get the content for the guide
     //   // Could zip files in a function:
     //   // https://gist.github.com/noelvo/4502eea719f83270c8e9
@@ -102,9 +105,29 @@
       return responses
     })()
   })
+  const copyToClipboard = async () => {
+    if (!window.navigator.clipboard) {
+      // Clipboard API not available
+      return
+    } else {
+      console.log(window.location.href)
+      const url = window.location.href
+      try {
+        await navigator.clipboard.writeText(url)
+        toast.push('🎉 Copied URL')
+      } catch (err) {
+        console.error('Failed to copy!', err)
+        toast.push('Failed to copy')
+      }
+    }
+  }
+
+  let cantCopy = true
 </script>
 
 <div class="guide">
+  <button class:cantCopy class="copyURL" data-shadow on:click={() => copyToClipboard()}
+    >Share results</button>
   <div class="wrapper flow">
     {#if api && api.machine_name}
       {#await downloads then value}
@@ -182,6 +205,10 @@
     text-align: center;
   }
 
+  .cantCopy {
+    display: none;
+  }
+
   :global(.loading svg) {
     animation: satellite-wobble 1s ease-in-out infinite alternate;
   }
@@ -193,5 +220,34 @@
     66% {
       transform: rotate(-5deg);
     }
+  }
+
+  :global(:root) {
+    --toastContainerTop: auto;
+    --toastContainerRight: var(--size-400);
+    --toastContainerBottom: calc(var(--size-900) * 2);
+    --toastContainerLeft: auto;
+    --toastBackground: var(--color-accent-light);
+    --toastProgressBackground: var(--color-accent);
+    --toastColor: var(--dark-text-color);
+    --toastWidth: 100%;
+  }
+
+  .copyURL {
+    position: absolute;
+    cursor: pointer;
+    left: auto;
+    right: var(--size-400);
+    border-radius: 12px;
+    background: #1947e5;
+    font-family: 'nowayregular', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #fff;
+    padding: 20px 16px;
+    font-size: 21px;
+    margin: 2rem auto 2rem 0;
+    border: none;
+    border-bottom: 2px solid #000;
+    text-shadow: none;
+    z-index: 99;
   }
 </style>
