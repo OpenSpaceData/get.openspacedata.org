@@ -2,27 +2,41 @@
   import {base} from '$app/paths'
   export async function load({page, fetch}) {
     const slug = page.params.slug
+    const location = page.query.get('location')
+    const rangeStart = page.query.get('from')
+    const rangeEnd = page.query.get('to')
+    const apiUrl = `https://osd-fetch.fershad.workers.dev/?case=${slug}&from=${rangeStart}&to=${rangeEnd}&location=${location}`
+    const api = await fetch(apiUrl).then(resp => resp.json())
+    // let downloads = []
+
+    const {files, bands} = api
+    const filesRegex = /B.{2}/g
+
+    const fileArray = Object.entries(files).map(e => e[1])
+
     const guide = await fetch(`${base}/guide/${slug}.json`).then(r => r.json())
+
+    // const data = await Promise.all([guide, getFileSize(), downloads])
+    // console.log(data)
+
     return {
-      props: {guide},
+      props: {guide, api, fileArray},
     }
   }
 </script>
 
 <script>
+  export let guide
+  export let api
+  export let fileArray
+  const filesRegex = /B.{2}/g
+  // let downloads
+
   import {onMount} from 'svelte'
   import {choice as selected, location, range} from '$lib/store'
   import NumberedHeading from '$lib/NumberedHeading.svelte'
   import InlineSVG from 'svelte-inline-svg'
   import satellite from '$lib/svg/satellite.svg'
-
-  export let guide
-
-  const rangeType = $range.type
-  /*
-    If the rangeType === 'latest' then set a startDate of 2 months ago & an endDate of today.
-    If it is a 'range' then send through the range dates set by the user.
-    */
 
   const getFilename = file => {
     const url = new URL(file).pathname.split('/')
@@ -30,111 +44,70 @@
     return filename
   }
 
-  let downloads = []
-  let batchDownload
-  let api = null
-
-  function formatDate(date) {
-    var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear()
-
-    if (month.length < 2) month = '0' + month
-    if (day.length < 2) day = '0' + day
-
-    return [year, month, day].join('-')
+  function bytesToSize(bytes) {
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+    if (bytes == 0) return 'n/a'
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
+    if (i == 0) return bytes + ' ' + sizes[i]
+    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i]
   }
+
+  const findSize = (file, sizes) => {
+    const match = sizes.find(size => size.file === file)
+    const mb = bytesToSize(match.f)
+    return mb
+  }
+
+  const downloads = (async () => {
+    const array = fileArray.map(file => {
+      return Object.entries(file).filter(entry => {
+        if (entry[0].match(filesRegex)) {
+          return entry
+        }
+      })
+    })
+
+    const allFiles = array.flat()
+    return allFiles
+  })()
+
+  let getFileSizes
 
   onMount(async () => {
-    // Get the content for the guide
+    //   // Get the content for the guide
+    //   // Could zip files in a function:
+    //   // https://gist.github.com/noelvo/4502eea719f83270c8e9
+    //   // Or on the browser:
+    //   // https://huynvk.dev/blog/download-files-and-zip-them-in-your-browsers-using-javascript
 
-    // Could zip files in a function:
-    // https://gist.github.com/noelvo/4502eea719f83270c8e9
-
-    // Or on the browser:
-    // https://huynvk.dev/blog/download-files-and-zip-them-in-your-browsers-using-javascript
-
-    const apiCase = $selected.id
-    const today = new Date()
-    const twoMonthsAgo = new Date().setMonth(today.getMonth() - 2)
-
-    const rangeStart = rangeType === 'latest' ? formatDate(twoMonthsAgo) : $range.startDate
-    const rangeEnd = rangeType === 'latest' ? formatDate(today) : $range.endDate
-
-    const apiUrl = `https://osd-fetch.fershad.workers.dev/?case=${apiCase}&from=${rangeStart}&to=${rangeEnd}&location=${$location.bbox}`
-    api = await fetch(apiUrl).then(resp => resp.json())
-
-    // console.log(api)
-    const {files, bands} = api
-    const filesRegex = /B.{2}/g
-
-    const fileArray = Object.entries(files).map(e => e[1])
-
-    downloads = await fileArray
-      .map(file => {
-        return Object.entries(file).filter(entry => {
-          if (entry[0].match(filesRegex)) {
-            return entry
-          }
+    getFileSizes = (async () => {
+      const array = fileArray
+        .map(file => {
+          return Object.entries(file).filter(entry => {
+            if (entry[0].match(filesRegex)) {
+              return entry
+            }
+          })
         })
+        .flat()
+
+      const sizes = await array.map(async download => {
+        const f = await fetch(`https://osd-file-size.fershad.workers.dev/?image=${download[1]}`)
+          .then(data => data.json())
+          .then(resp => resp.length)
+        return {file: download[1], f}
       })
-      .flat()
-    batchDownload = downloads.map(download => download[1])
+
+      const responses = await Promise.all(sizes)
+      return responses
+    })()
   })
-
-  import Promise from 'bluebird'
-  import JsZip from 'jszip'
-  import FileSaver from 'file-saver'
-
-  let batching = false
-
-  const download = url => {
-    console.log(`Downloading: ${url}`)
-    return fetch(url)
-      .then(resp => resp.blob())
-      .catch(error => console.log(error))
-  }
-
-  const downloadByGroup = (urls, files_per_group = 5) => {
-    return Promise.map(
-      urls,
-      async url => {
-        return await download(url)
-      },
-      {concurrency: files_per_group}
-    )
-  }
-
-  const exportZip = blobs => {
-    const zip = JsZip()
-    blobs.forEach((blob, i) => {
-      zip.file(`file-${i}.csv`, blob)
-    })
-    zip.generateAsync({type: 'blob'}).then(zipFile => {
-      const currentDate = new Date().getTime()
-      const fileName = `combined-${currentDate}.zip`
-      return FileSaver.saveAs(zipFile, fileName)
-    })
-  }
-
-  const downloadAndZip = () => {
-    return downloadByGroup(batchDownload, 5).then(exportZip)
-  }
-
-  var remote = require('remote-file-size')
-  const getRemoteFileSize = url => {
-    remote(url, function (err, o) {
-      console.log(o)
-      return o
-    })
-  }
 </script>
 
 <div class="guide">
   <div class="wrapper flow">
     {#if api && api.machine_name}
-      {#if downloads.length > 0}
+      {#await downloads then value}
         <h1><strong>Well done! 🎉</strong><br />And now there' s the fun part:</h1>
         <section class="flow">
           <NumberedHeading text="What are we going to do?" step="?" />
@@ -153,19 +126,21 @@
               Sounds really exciting, right? But no problem for you: You just have to click the
               download buttons: 👇
             </p>
-            <button on:click={() => downloadAndZip()}>Download all files</button>
-            <ul class="downloads">
-              {#each downloads as download}
-                <li>
-                  <a href={download[1]} download="" id="download-band-{download[0]}"
-                    >Download file: {getFilename(download[1])} ({getRemoteFileSize(
-                      download[1]
-                    )})</a>
-                </li>
-              {:else}
-                Loading ....
-              {/each}
-            </ul>
+            {#await getFileSizes then sizes}
+              <ul class="downloads">
+                {#each value as download}
+                  <li>
+                    <a href={download[1]} download="" id="download-band-{download[0]}"
+                      >Download file: {getFilename(download[1])} ({findSize(
+                        download[1],
+                        sizes
+                      )})</a>
+                  </li>
+                {:else}
+                  Loading ....
+                {/each}
+              </ul>
+            {/await}
           </div>
           <div class="content">
             <h3>Why I have to download multiple files?</h3>
@@ -184,11 +159,7 @@
             {@html guide.content.interpret[0]}
           {/if}
         </section>
-      {:else}
-        <h2>Data unavailable</h2>
-        <p>We can't find data that matches you search criteria.</p>
-        <a href="/" class="button">Modify criteria</a>
-      {/if}
+      {/await}
     {:else if api && api.failed}
       <h2>Data unavailable</h2>
       <p>We can't find data that matches you search criteria.</p>

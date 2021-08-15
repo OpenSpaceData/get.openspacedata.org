@@ -40,6 +40,24 @@
   export let categories
   export let cases
 
+  function formatDate(date) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear()
+
+    if (month.length < 2) month = '0' + month
+    if (day.length < 2) day = '0' + day
+
+    return [year, month, day].join('-')
+  }
+
+  const today = new Date()
+  const twoMonthsAgo = new Date().setMonth(today.getMonth() - 2)
+
+  $: rangeStart = $range.type === 'latest' ? formatDate(twoMonthsAgo) : $range.startDate
+  $: rangeEnd = $range.type === 'latest' ? formatDate(today) : $range.endDate
+
   let disableButton = true
   $: if ($selected && $location && $range.type === 'latest') {
     disableButton = false
@@ -144,7 +162,11 @@
         class="submit"
         on:click|preventDefault={() => {
           checkForm()
-          !disableButton ? goto(`/guide/${$selected.id}`) : null
+          !disableButton
+            ? goto(
+                `/guide/${$selected.id}?location=${$location.bbox}&from=${rangeStart}&to=${rangeEnd}`
+              )
+            : null
         }}
         href="/guide"
         class:disableButton
