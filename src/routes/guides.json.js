@@ -19,7 +19,7 @@ export async function get({
 
     let guides = [];
     for (const [filePath, resolver] of Object.entries(modules)) {
-        const guide = fs.readFileSync(path.join(__dirname, filePath), "utf-8")
+        const guide = fs.readFileSync(path.join('/opt/build/repo', filePath), "utf-8")
 
         // Parse frontmatter
         const {
@@ -48,8 +48,14 @@ export async function get({
     const cases = Object.keys(groupByCase(guides))
     const merged = cases.map(value => {
         const relatedCases = guides.filter(guide => guide.case === value)
-        const content = relatedCases.reduce((acc, key) => ({...acc, [key.content]: [key.html] }), {})
-        return {value, content}
+        const content = relatedCases.reduce((acc, key) => ({
+            ...acc,
+            [key.content]: [key.html]
+        }), {})
+        return {
+            value,
+            content
+        }
     })
 
     return {
