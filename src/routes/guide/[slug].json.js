@@ -14,6 +14,10 @@ export function get({
     const modules =
         import.meta.glob(`/src/guides/**/cases/**/*.md`);
 
+    return {
+        body: modules
+    }
+
     let guides = [];
     let guideData = [];
     for (const [filePath, resolver] of Object.entries(modules)) {

@@ -2,6 +2,7 @@
   import {base} from '$app/paths'
   export async function load({page, fetch}) {
     const slug = page.params.slug
+    console.log(`${base}/guide/${slug}.json`)
     const guide = await fetch(`${base}/guide/${slug}.json`).then(r => r.json())
     return {
       props: {guide},
