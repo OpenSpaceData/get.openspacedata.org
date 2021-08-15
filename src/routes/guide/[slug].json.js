@@ -72,6 +72,6 @@ export function get({
 
 
     return {
-        body: content
+        body: modules
     }
 }
