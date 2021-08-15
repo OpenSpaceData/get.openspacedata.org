@@ -6,14 +6,12 @@
     const guidesURL = `/guides.json`
     const categories = await fetch(categoriesURL)
     const cases = await fetch(casesURL)
-    const cases = await fetch(casesURL)
     const guides = await fetch(guidesURL)
 
     if (categories.ok && cases.ok) {
       return {
         props: {
           categories: await categories.json(),
-          cases: await cases.json(),
           cases: await cases.json(),
           guides: await guides.json(),
         },
