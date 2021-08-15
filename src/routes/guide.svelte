@@ -74,7 +74,6 @@
     const apiUrl = `https://osd-fetch.fershad.workers.dev/?case=${apiCase}&from=${rangeStart}&to=${rangeEnd}&location=${$location.bbox}`
     api = await fetch(apiUrl).then(resp => resp.json())
 
-    console.log(api)
     const {files, bands} = api
     const filesRegex = /B.{2}/g
 
