@@ -43,7 +43,7 @@ export function get({
     })
 
     return {
-        body: guidesData
+        body: guideData
     }
 
 }
