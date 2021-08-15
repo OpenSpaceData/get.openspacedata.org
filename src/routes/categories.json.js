@@ -14,14 +14,17 @@ export async function get({
     for (const [filePath, resolver] of Object.entries(modules)) {
         const pathArray = filePath.split('/')
         const parentFolder = pathArray[pathArray.length - 2]
-        const category = path.join(__dirname, filePath)
+        const category = fs.readFileSync(path.join(__dirname, filePath), "utf-8")
 
         // Parse frontmatter
         const {
             data
         } = grayMatter(category)
 
-        categories.push(category)
+        categories.push({
+            ...data,
+            parentFolder
+        })
     }
 
     return {
