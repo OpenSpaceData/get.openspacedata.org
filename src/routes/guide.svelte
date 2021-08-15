@@ -1,5 +1,4 @@
 <script context="module">
-  export const prerender = true
   export async function load({page, fetch, session, context}) {
     const url = `/guides.json`
     const res = await fetch(url)
