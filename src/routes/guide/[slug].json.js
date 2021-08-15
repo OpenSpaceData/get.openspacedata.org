@@ -26,7 +26,7 @@ export function get({
 
 
     guides.map(filePath => {
-        const guide = path.join(__dirname, filePath)
+        const guide = fs.readFileSync(path.join('/opt/build/repo', filePath), "utf-8")
 
         // Parse frontmatter
         const {
@@ -39,11 +39,20 @@ export function get({
             renderer
         })
 
-        guideData.push(guide)
+        guideData.push({
+            case: data.case,
+            content: data.content,
+            html
+        })
     })
 
-    return {
-        body: guideData
-    }
+    const content = guideData.reduce((acc, key) => ({
+        ...acc,
+        [key.content]: [key.html]
+    }), {})
 
+
+    return {
+        body: content
+    }
 }
