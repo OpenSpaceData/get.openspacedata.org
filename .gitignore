@@ -4,8 +4,6 @@ node_modules
 /package
 .env
 
-static/fonts
-static/img/*.jpg
 .vscode
 package-lock.json
 build
