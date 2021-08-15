@@ -1,5 +1,5 @@
 ---
-case: 'green-vegetation-health'
+case: 'vegetation-health'
 content: 'process'
 ---
 ### Step 1: Download and install QGis

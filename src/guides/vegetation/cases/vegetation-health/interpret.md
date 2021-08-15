@@ -1,5 +1,5 @@
 ---
-case: 'green-vegetation-health'
+case: 'vegetation-health'
 content: 'interpret'
 ---
 
