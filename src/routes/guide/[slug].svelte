@@ -210,7 +210,7 @@
     text-align: center;
   }
 
-  .button {
+  .downloads .button {
     width: min-content;
     padding: var(--size-400) var(--size-300);
     display: inline-block;
