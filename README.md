@@ -33,9 +33,17 @@ Navigate to [localhost:3000](http://localhost:3000). You should see the app runn
 
 ## The app
 
-The app has two main routes - form & guide. You will find both in the `src/routes` folder of the project. The form view is the `index.svelte` (the first route that is loaded when the app is launched). The guide route is in the `guide.svelte` file.
+The app has two main routes - form & guide. You will find both in the `src/routes` folder of the project. The form view is the `index.svelte` (the first route that is loaded when the app is launched). 
 
-To view content on the guide page, one must first complete the questions in the form view. As questions are completed the responses are retained in a Svelte store (`src/lib/store/index.js`). 
+Guides are dynamically routed based on the selected case. Template and data files can be found in the `src/routes/guide` folder. Guides require the following data to be passed as query parameters with each page request:
+
+- `location`: The selected user location represented as a bounding box (bbox) array.
+- `from`: The starting date set by the user. If the user is requesting that latest data, then this will be set automatically to 2 months before the current day.
+- `to`: The starting date set by the user. If the user is requesting that latest data, then this will be set automatically to the current day.
+
+### Other data
+
+Currently, data for the categories, cases and guide content are compiled in individual JSON files at build time. The `category.json` and `cases.json` are used on the index page and passed through to their respective components. The `guides.json` file is used as a reference for generating data for individual guide routes in `src/routes/guide/[slug].json.js`.
 
 ### Data structure
 
@@ -68,8 +76,8 @@ image: '/img/forest.jpg'
 ---
 heading: 'Visualizing Barren Soil'
 difficulty: 'moderate'
-# The id should correspond with a "machine_name" field in the API. 
 id: 'barren-soil' 
+# The id should correspond with a "machine_name" field in the API. 
 ---
 ```
 
