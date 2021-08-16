@@ -196,7 +196,7 @@
     {:else}
       <h2>Data unavailable</h2>
       <p>We can't find data that matches you search criteria.</p>
-      <a href="/" class="button">Modify criteria</a>
+      <a href="/" class="button modify">Modify criteria</a>
     {/if}
   </div>
 </div>
