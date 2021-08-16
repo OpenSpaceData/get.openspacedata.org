@@ -7,7 +7,7 @@
   const src =
     process.env.NODE_ENV === 'development'
       ? path
-      : `https://res.cloudinary.com/itsfish/image/fetch/f_jpg,q_auto/https://openspacedata.netlify.app${path}`
+      : `https://res.cloudinary.com/itsfish/image/fetch/f_auto,q_auto/https://openspacedata.netlify.app${path}`
 </script>
 
 <img {src} {alt} {height} {width} />
