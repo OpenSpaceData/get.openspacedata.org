@@ -3,6 +3,7 @@
   import {fade, fly} from 'svelte/transition'
   // import { categories } from './data/categories';
   import Case from './Case.svelte'
+  import Image from '$lib/Image.svelte'
   import Back from './BackToCategories.svelte'
 
   const setChoice = option => {
@@ -24,7 +25,7 @@
             choosing = true
             setChoice(cat)
           }}>
-          <img src={cat.image} alt=" " height="206" width="252" />
+          <Image path={cat.image} alt=" " height="206" width="252" />
           <span>{cat.text}</span>
         </button>
       {/each}

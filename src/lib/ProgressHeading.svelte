@@ -3,6 +3,7 @@
   export let section
   import edit from '$lib/svg/edit.svg'
   import InlineSVG from 'svelte-inline-svg'
+  import Image from './Image.svelte'
 
   const goBack = step => {
     if (step === 1) {
@@ -25,8 +26,10 @@
   {/if}
   {#if section === 'location'}
     <div id="location" class="step">
-      <!-- pin-s+555555($location.center) -->
-      <img src="https://osd-static-map.fershad.workers.dev/?bbox={$location.bbox}" alt="" id="map" />
+      <Image
+        path="https://osd-static-map.fershad.workers.dev/?bbox={$location.bbox}"
+        alt=""
+        id="map" />
     </div>
   {/if}
   <div class="title">

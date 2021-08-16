@@ -1,7 +1,16 @@
+<script>
+  import {page} from '$app/stores'
+  import github from '$lib/svg/github-logo.svg'
+  import InlineSVG from 'svelte-inline-svg'
+  import Image from './Image.svelte'
+</script>
+
 <header>
   <div class="wrapper">
     <div class="logo">
-      <a href="/"><img src="/img/openspacedata-logo.png" alt="" height="64" width="140" /></a>
+      <a href="/">
+        <Image path="/img/openspacedata-logo.png" alt="" height="64" width="140" />
+      </a>
     </div>
     <nav>
       <ul>
