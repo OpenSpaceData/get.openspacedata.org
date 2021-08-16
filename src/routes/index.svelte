@@ -188,13 +188,13 @@
           in:fade|local={{delay: 50}}
           class="button"
           on:click|preventDefault={() => {
-            fetching = !fetching
             checkForm()
-            !disableButton
-              ? goto(
-                  `/guide/${$selected.id}?location=${$location.bbox}&from=${rangeStart}&to=${rangeEnd}`
-                )
-              : null
+            if (!disableButton) {
+              fetching = !fetching
+              goto(
+                `/guide/${$selected.id}?location=${$location.bbox}&from=${rangeStart}&to=${rangeEnd}`
+              )
+            }
           }}
           href="#"
           class:disableButton
@@ -230,7 +230,7 @@
   }
 
   .wrapper[data-scroll] {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 
   .narrow {
