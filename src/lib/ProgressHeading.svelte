@@ -26,8 +26,8 @@
   {/if}
   {#if section === 'location'}
     <div id="location" class="step">
-      <Image
-        path="https://osd-static-map.fershad.workers.dev/?bbox={$location.bbox}"
+      <img
+        src="https://osd-static-map.fershad.workers.dev/?bbox={$location.bbox}"
         alt=""
         id="map" />
     </div>
@@ -129,7 +129,7 @@
     font-size: var(--size-800);
   }
 
-  :global(img#map) {
+  #map {
     height: 100px;
     width: 100px;
     border-radius: 100%;
