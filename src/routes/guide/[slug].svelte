@@ -161,11 +161,15 @@
               <ul class="downloads">
                 {#each value as download}
                   <li>
-                    <a href={download[1]} download="" id="download-band-{download[0]}"
-                      >Download file: {getFilename(download[1])} ({findSize(
-                        download[1],
-                        sizes
-                      )})</a>
+                    <a
+                      class="button"
+                      href={download[1]}
+                      download={download[1]}
+                      id="download-band-{download[0]}">Download</a>
+                    <span
+                      ><strong>Filename:</strong>
+                      {getFilename(download[1])}<br /><strong>Size:</strong>
+                      {findSize(download[1], sizes)}</span>
                   </li>
                 {/each}
               </ul>
@@ -206,21 +210,27 @@
     text-align: center;
   }
 
+  .button {
+    width: min-content;
+    padding: var(--size-400) var(--size-300);
+    display: inline-block;
+    margin-right: var(--size-400);
+    font-size: var(--size-400);
+  }
+
   .cantCopy {
     display: none;
   }
 
-  :global(.loading svg) {
-    animation: satellite-wobble 1s ease-in-out infinite alternate;
+  .downloads > li {
+    display: inline-grid;
+    grid-template-columns: 8rem 1fr;
+    align-items: center;
+    width: 100%;
   }
 
-  @keyframes satellite-wobble {
-    33% {
-      transform: rotate(5deg);
-    }
-    66% {
-      transform: rotate(-5deg);
-    }
+  .downloads {
+    padding: 0;
   }
 
   :global(:root) {

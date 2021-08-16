@@ -264,4 +264,17 @@
     justify-content: center;
     align-items: center;
   }
+
+  :global(.loading svg) {
+    animation: satellite-wobble 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes satellite-wobble {
+    33% {
+      transform: rotate(5deg);
+    }
+    66% {
+      transform: rotate(-5deg);
+    }
+  }
 </style>
