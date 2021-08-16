@@ -17,6 +17,7 @@ const groupBy = key => array =>
 const imageSrc = (html) => {
     const $ = cheerio.load(html);
     const images = $('img')
+    const videos = $('video')
     $(images).each(function (i, elem) {
         const path = $(images[i]).attr('src')
         const src =
@@ -26,6 +27,12 @@ const imageSrc = (html) => {
 
 
         $(images[i]).attr('src', src)
+        $(images[i]).attr('loading', 'lazy')
+    });
+
+    $(videos).each(function (i, elem) {
+        $(videos[i]).attr('preload', 'none')
+        $(videos[i]).attr('poster', '/img/openspacedata-logo-black.jpg')
     });
 
     return $.html()
