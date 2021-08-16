@@ -1,6 +1,6 @@
 a.button {
     border-radius: 12px;
-    background: #1947e5;
+    background: var(--color-primary);
     font-family: 'nowayregular', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #fff;
     padding: 20px 16px;
@@ -16,4 +16,14 @@ a.button {
     justify-content: center;
     align-items: center;
     text-shadow: none;
+    transition: box-shadow 0.2s ease-out;
+}
+
+a.button:not(.disableButton):hover, a.button:not(.disableButton):focus {
+    box-shadow: none;
+}
+
+a.button:not(.disableButton):focus {
+    background-color: var(--color-accent);
+    color: var(--color-black);
 }

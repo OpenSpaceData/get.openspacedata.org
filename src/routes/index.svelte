@@ -191,7 +191,7 @@
         <a
           out:fade|local={{duration: 50}}
           in:fade|local={{delay: 50}}
-          class="submit"
+          class="button"
           on:click|preventDefault={() => {
             fetching = !fetching
             checkForm()
@@ -251,27 +251,7 @@
     --flow-space: var(--size-600);
   }
 
-  a.submit {
-    border-radius: 12px;
-    background: #1947e5;
-    font-family: 'nowayregular', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #fff;
-    padding: 20px 16px;
-    width: 100%;
-    font-size: 21px;
-    margin: 2rem auto 2rem 0;
-    box-shadow: #000 1px 2px 0;
-    border: none;
-    border-bottom: 2px solid #000;
-    cursor: pointer;
-    display: flex;
-    gap: var(--size-500);
-    justify-content: center;
-    align-items: center;
-    text-shadow: none;
-  }
-
-  :global(a.submit.disableButton) {
+  :global(a.button.disableButton) {
     background: var(--color-dark-grey) !important;
     color: var(--color-white) !important;
     cursor: default !important;

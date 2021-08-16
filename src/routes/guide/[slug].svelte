@@ -6,21 +6,25 @@
     const rangeStart = page.query.get('from')
     const rangeEnd = page.query.get('to')
     const apiUrl = `https://osd-fetch.fershad.workers.dev/?case=${slug}&from=${rangeStart}&to=${rangeEnd}&location=${location}`
-    const api = await fetch(apiUrl).then(resp => resp.json())
-    // let downloads = []
+    try {
+      const api = await fetch(apiUrl).then(resp => resp.json())
+      // let downloads = []
+      const {files, bands} = api
+      const filesRegex = /B.{2}/g
 
-    const {files, bands} = api
-    const filesRegex = /B.{2}/g
+      const fileArray = Object.entries(files).map(e => e[1])
 
-    const fileArray = Object.entries(files).map(e => e[1])
+      const guide = await fetch(`${base}/guide/${slug}.json`).then(r => r.json())
 
-    const guide = await fetch(`${base}/guide/${slug}.json`).then(r => r.json())
-
-    // const data = await Promise.all([guide, getFileSize(), downloads])
-    // console.log(data)
-
-    return {
-      props: {guide, api, fileArray},
+      return {
+        props: {status: 200, guide, api, fileArray},
+      }
+    } catch (error) {
+      return {
+        status: 206,
+        // error: new Error(`Could not load`),
+        // redirect: '/',
+      }
     }
   }
 </script>
@@ -29,6 +33,8 @@
   export let guide
   export let api
   export let fileArray
+  export let status
+
   const filesRegex = /B.{2}/g
   // let downloads
 
@@ -126,10 +132,12 @@
 </script>
 
 <div class="guide">
-  <button class:cantCopy class="copyURL" data-shadow on:click={() => copyToClipboard()}
-    >Share results</button>
+  {#if status === 200 && api && api.machine_name}
+    <button class:cantCopy class="copyURL" data-shadow on:click={() => copyToClipboard()}
+      >Share results</button>
+  {/if}
   <div class="wrapper flow">
-    {#if api && api.machine_name}
+    {#if status === 200 && api && api.machine_name}
       {#await downloads then value}
         <h1><strong>Well done! 🎉</strong><br />And now there' s the fun part:</h1>
         <section class="flow">
@@ -159,8 +167,6 @@
                         sizes
                       )})</a>
                   </li>
-                {:else}
-                  Loading ....
                 {/each}
               </ul>
             {/await}
@@ -183,15 +189,10 @@
           {/if}
         </section>
       {/await}
-    {:else if api && api.failed}
+    {:else}
       <h2>Data unavailable</h2>
       <p>We can't find data that matches you search criteria.</p>
       <a href="/" class="button">Modify criteria</a>
-    {:else}
-      <div class="loading">
-        <InlineSVG src={satellite} />
-        <h2>Fetching data ...</h2>
-      </div>
     {/if}
   </div>
 </div>
