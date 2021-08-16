@@ -129,7 +129,7 @@
     font-size: var(--size-800);
   }
 
-  #map {
+  :global(img#map) {
     height: 100px;
     width: 100px;
     border-radius: 100%;
