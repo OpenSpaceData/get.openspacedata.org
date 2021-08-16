@@ -36,6 +36,7 @@
   "dependencies": {
     "@lukeed/uuid": "^2.0.0",
     "bluebird": "^3.7.2",
+    "cheerio": "^1.0.0-rc.10",
     "cookie": "^0.4.1",
     "file-saver": "^2.0.5",
     "got": "^11.8.2",

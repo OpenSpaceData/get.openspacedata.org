@@ -3,6 +3,7 @@ import path from 'path';
 import marked from 'marked';
 import grayMatter from 'gray-matter'
 const __dirname = path.resolve(path.dirname(''));
+import * as cheerio from 'cheerio';
 const mode = process.env.NODE_ENV
 const guidesPath = mode === 'development' ? __dirname : '/opt/build/repo'
 
@@ -12,6 +13,23 @@ const groupBy = key => array =>
         objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
         return objectsByKeyValue;
     }, {});
+
+const imageSrc = (html) => {
+    const $ = cheerio.load(html);
+    const images = $('img')
+    $(images).each(function (i, elem) {
+        const path = $(images[i]).attr('src')
+        const src =
+            mode === 'development' ?
+            path :
+            `https://res.cloudinary.com/itsfish/image/fetch/f_auto,q_auto/https://openspacedata.netlify.app${path}`
+
+
+        $(images[i]).attr('src', src)
+    });
+
+    return $.html()
+}
 
 export async function get({
     params
@@ -30,14 +48,16 @@ export async function get({
         } = grayMatter(guide)
 
         const renderer = new marked.Renderer();
-        const html = marked(content, {
+        const html = await marked(content, {
             renderer
         })
+
+        let optimHTML = await imageSrc(html)
 
         guides.push({
             case: data.case,
             content: data.content,
-            html
+            html: optimHTML
         })
     }
 
