@@ -90,6 +90,13 @@
     margin: 15px 0;
   }
 
+  @media screen and (max-width: 48rem) {
+    ul.indices li {
+      flex-wrap: wrap;
+      gap: var(--size-400);
+    }
+  }
+
   .task {
     /* flex-grow: 1; */
     transition: all 0.15s;

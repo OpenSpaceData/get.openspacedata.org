@@ -103,11 +103,6 @@
   }
 </script>
 
-{#if $selected && showProgress}
-  <!-- content here -->
-  <!-- <Progress bind:progress /> -->
-{/if}
-
 <section>
   <div class="wrapper" data-height="">
     <div class="flow">
@@ -122,7 +117,7 @@
     </div>
     {#if !$selected}
       <div class="full-width" transition:slide>
-        <div class="wrapper">
+        <div class="wrapper" data-scroll>
           <Caterogy {categories} {cases} />
         </div>
       </div>
@@ -232,6 +227,10 @@
     --toastProgressBackground: var(--color-accent);
     --toastColor: var(--dark-text-color);
     --toastWidth: 100%;
+  }
+
+  .wrapper[data-scroll] {
+    overflow-x: scroll;
   }
 
   .narrow {

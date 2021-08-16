@@ -20,6 +20,12 @@
     padding-left: 140px;
   }
 
+  @media screen and (max-width: 48rem) {
+    .locationSearch {
+      padding-left: 0;
+    }
+  }
+
   :global(.mapboxgl-ctrl) {
     width: 100% !important;
     max-width: 100% !important;

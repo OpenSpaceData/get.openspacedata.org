@@ -47,6 +47,12 @@
     --auto-grid-cols: 3;
   }
 
+  @media screen and (max-width: 48rem) {
+    div.categories {
+      --auto-grid-cols: 6;
+    }
+  }
+
   button {
     width: 100%;
     height: 210px;

@@ -16,6 +16,19 @@
 </div>
 
 <style>
+  @media screen and (max-width: 42rem) {
+    .heading .step {
+      display: none;
+    }
+
+    .heading .title {
+      grid-column: -1/1;
+    }
+
+    .heading {
+      text-align: center;
+    }
+  }
   .heading {
     display: grid;
     gap: var(--size-400);

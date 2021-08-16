@@ -262,6 +262,13 @@
     z-index: 99;
   }
 
+  @media screen and (max-width: 48rem) {
+    .copyURL {
+      position: fixed;
+      bottom: 0;
+    }
+  }
+
   .copyURL:hover,
   .copyURL:focus {
     box-shadow: none;

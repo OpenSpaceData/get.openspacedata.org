@@ -32,3 +32,9 @@ summary {
 section p:not(details > p), .content > p, h3, video, ol, ul, details {
     margin-left: 140px;
 }
+
+@media screen and (max-width: 36rem) {
+    section p:not(details > p), .content > p, h3, video, ol, ul, details {
+        margin-left: 0
+    }   
+}

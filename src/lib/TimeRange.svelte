@@ -72,6 +72,12 @@
     padding-left: 140px;
   }
 
+  @media screen and (max-width: 48rem) {
+    .timeRange {
+      padding-left: 0;
+    }
+  }
+
   div.horizontal {
     display: flex;
     align-items: center;
@@ -109,6 +115,7 @@
     justify-content: flex-start;
     gap: 1rem;
     margin-bottom: 1rem;
+    flex: 1 0 auto;
   }
 
   label.datepicker {

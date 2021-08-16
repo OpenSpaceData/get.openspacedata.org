@@ -16,7 +16,7 @@
       <ul>
         <li><a href="/about">About</a></li>
         <li><a href="/help">Help</a></li>
-        <li>
+        <li class="svg-link">
           <a href="https://github.com/OpenSpaceData" class="svg"
             ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
               ><path
@@ -41,6 +41,12 @@
     padding: var(--size-300) 0;
     color: var(--light-text-color);
     /* overflow: hidden; */
+  }
+
+  @media screen and (max-width: 36rem) {
+    .svg-link {
+      display: none;
+    }
   }
 
   header .logo {
@@ -68,7 +74,7 @@
   header nav ul {
     display: flex;
     justify-content: center;
-    --gap: var(--size-400);
+    --gap: var(--size-300);
     flex-wrap: wrap;
     margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
     width: calc(100% + var(--gap));

@@ -1,0 +1,6 @@
+@media screen and (min-width: 42rem) {
+    video {
+        max-width: 100%;
+        width: calc(100% - 140px);
+    }
+}

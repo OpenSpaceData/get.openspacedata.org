@@ -21,17 +21,17 @@
 </script>
 
 <div class="heading">
-  {#if section === 'category'}
-    <div id={$selected.parentFolder} class="step" />
-  {/if}
-  {#if section === 'location'}
-    <div id="location" class="step">
+  <div id="location" class="step">
+    {#if section === 'category'}
+      <span id={$selected.parentFolder} class="step" />
+    {/if}
+    {#if section === 'location'}
       <img
         src="https://osd-static-map.fershad.workers.dev/?bbox={$location.bbox}"
         alt=""
         id="map" />
-    </div>
-  {/if}
+    {/if}
+  </div>
   <div class="title">
     {#if section === 'category'}
       <h2>{$selected.heading}</h2>
@@ -47,6 +47,19 @@
 </div>
 
 <style>
+  @media screen and (max-width: 42rem) {
+    .heading .step {
+      display: none;
+    }
+
+    .heading .title {
+      grid-column: -1/1;
+    }
+    .heading {
+      text-align: center;
+    }
+  }
+
   button {
     display: inline;
     background: none;

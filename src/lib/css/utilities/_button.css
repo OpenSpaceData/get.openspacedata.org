@@ -27,3 +27,10 @@ a.button:not(.disableButton):focus {
     background-color: var(--color-accent);
     color: var(--color-black);
 }
+
+@media screen and (max-width: 48rem) {
+    a.button {
+        margin: 2rem auto;
+        width: 100%;
+    }
+}
