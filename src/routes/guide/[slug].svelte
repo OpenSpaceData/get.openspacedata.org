@@ -240,7 +240,7 @@
     left: auto;
     right: var(--size-400);
     border-radius: 12px;
-    background: #1947e5;
+    background: var(--color-primary);
     font-family: 'nowayregular', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #fff;
     padding: 20px 16px;
@@ -250,5 +250,15 @@
     border-bottom: 2px solid #000;
     text-shadow: none;
     z-index: 99;
+  }
+
+  .copyURL:hover,
+  .copyURL:focus {
+    box-shadow: none;
+  }
+
+  .copyURL:focus {
+    background-color: var(--color-accent);
+    color: var(--color-black);
   }
 </style>
