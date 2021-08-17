@@ -1,5 +1,5 @@
 ---
-case: 'detect-water'
+case: 'water'
 content: 'process'
 ---
 ### Step 1: Download and install QGis
