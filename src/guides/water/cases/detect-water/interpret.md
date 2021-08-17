@@ -1,5 +1,5 @@
 ---
-case: 'detect-water'
+case: 'water'
 content: 'interpret'
 ---
 
