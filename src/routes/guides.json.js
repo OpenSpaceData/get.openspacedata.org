@@ -4,6 +4,7 @@ import marked from 'marked';
 import grayMatter from 'gray-matter'
 const __dirname = path.resolve(path.dirname(''));
 import * as cheerio from 'cheerio';
+import {htmlEscape, htmlUnescape} from 'escape-goat';
 const mode = process.env.NODE_ENV
 const guidesPath = mode === 'development' ? __dirname : '/opt/build/repo'
 
@@ -58,13 +59,14 @@ export async function get({
         const html = await marked(content, {
             renderer
         })
-
+        
         const optimHTML = await imageSrc(html)
+        const escapedHTML = htmlEscape(optimHTML)
 
         guides.push({
             case: data.case,
             content: data.content,
-            html: optimHTML
+            html: escapedHTML
         })
     }
 
