@@ -6,7 +6,7 @@ import adapter from '@sveltejs/adapter-netlify';
 const config = {
 	extensions: [".svelte", '.svx'],
 	preprocess: [
-		md.mdsvex(),
+		md.mdsvex({ extensions: ['.svx', '.md'] }),
 		preprocess({
 			defaults: {
 				style: 'postcss'
