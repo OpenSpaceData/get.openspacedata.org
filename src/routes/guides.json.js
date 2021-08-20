@@ -59,7 +59,7 @@ export async function get({
             renderer
         })
 
-        let optimHTML = await imageSrc(html)
+        const optimHTML = await imageSrc(html)
 
         guides.push({
             case: data.case,
