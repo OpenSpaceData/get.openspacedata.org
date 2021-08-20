@@ -21,7 +21,7 @@ const config = {
 		target: '#svelte',
 		adapter: adapter(),
 		vite: () => ({
-			plugins: [Markdown()]
+			plugins: [Markdown]
 		})
 	}
 };
