@@ -61,12 +61,12 @@ export async function get({
         })
         
         const optimHTML = await imageSrc(html)
-        const escapedHTML = htmlEscape(optimHTML)
+        const escapedHTML = htmlEscape(html)
 
         guides.push({
             case: data.case,
             content: data.content,
-            html: escapedHTML
+            html: optimHTML
         })
     }
 

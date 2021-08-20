@@ -184,7 +184,7 @@
         <section>
           <NumberedHeading step="2" text="Process the images" />
           {#if guide}
-            {@html htmlUnescape(guide.content.process[0])}
+            {@html guide.content.process[0]}
           {/if}
         </section>
         <section>

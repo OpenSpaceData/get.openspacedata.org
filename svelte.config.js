@@ -4,7 +4,7 @@ import md from 'mdsvex';
 import adapter from '@sveltejs/adapter-netlify';
 
 const config = {
-	extensions: [".svelte", ".md", '.svx'],
+	extensions: [".svelte", '.svx'],
 	preprocess: [
 		md.mdsvex(),
 		preprocess({
