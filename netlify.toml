@@ -7,8 +7,3 @@
   for ="/*"
   [headers.values]
     Permissions-Policy = "interest-cohort=()"
-
-[[redirects]]
-  from = "/*"
-  to = "/404/index.html"
-  status = 404
