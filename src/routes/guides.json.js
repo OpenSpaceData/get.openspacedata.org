@@ -30,10 +30,10 @@ const imageSrc = (html) => {
         $(images[i]).attr('loading', 'lazy')
     });
 
-    $(videos).each(function (i, elem) {
-        $(videos[i]).attr('preload', 'none')
-        $(videos[i]).attr('poster', '/img/openspacedata-logo-black.jpg')
-    });
+    // $(videos).each(function (i, elem) {
+    //     $(videos[i]).attr('preload', 'none')
+    //     $(videos[i]).attr('poster', '/img/openspacedata-logo-black.jpg')
+    // });
 
     return $.html()
 }
