@@ -15,8 +15,12 @@ a.button {
     gap: var(--size-500);
     justify-content: center;
     align-items: center;
-    text-shadow: none;
+    text-shadow: none; 
     transition: box-shadow 0.2s ease-out;
+}
+
+a.formButton {
+    margin-left: 140px;
 }
 
 a.button:not(.disableButton):hover, a.button:not(.disableButton):focus {
