@@ -39,6 +39,7 @@
   // let downloads
 
   import {toast} from '@zerodevx/svelte-toast'
+  import {htmlEscape, htmlUnescape} from 'escape-goat';
 
   import {onMount} from 'svelte'
   import {choice as selected, location, range} from '$lib/store'
