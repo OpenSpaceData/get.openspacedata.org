@@ -8,12 +8,14 @@
     const apiUrl = `https://osd-fetch.fershad.workers.dev/?case=${slug}&from=${rangeStart}&to=${rangeEnd}&location=${location}`
     try {
       const api = await fetch(apiUrl).then(resp => resp.json())
+      console.log(api)
       // let downloads = []
       const {files, bands} = api
+      console.log(files)
       const filesRegex = /B.{2}/g
 
       const fileArray = Object.entries(files).map(e => e[1])
-
+      console.log(fileArray)
       const guide = await fetch(`${base}/guide/${slug}.json`).then(r => r.json())
 
       return {
