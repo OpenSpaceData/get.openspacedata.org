@@ -1,0 +1,29 @@
+---
+---
+<script context="module">
+  export const prerender = true
+</script>
+
+<script>
+  import Follow from '$lib/Follow.svelte'
+  import Fund from '$lib/Fund.svelte'
+</script>
+
+<svelte:head>
+  <title>About OpenSpaceData</title>
+</svelte:head>
+
+<style>
+  ul {
+    margin-left: 0;
+  }
+  </style>
+
+# 404 Cannot find page
+
+We can't find the page that you're looking for. Try searching for some data first.
+      
+<a href="/" class="button modify">New search</a>
+
+<Follow />
+<Fund />
