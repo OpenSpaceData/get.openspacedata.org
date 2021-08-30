@@ -1,4 +1,5 @@
 <script context="module">
+  export const prerender = true
   import {base} from '$app/paths'
   export async function load({page, fetch}) {
     const slug = page.params.slug
