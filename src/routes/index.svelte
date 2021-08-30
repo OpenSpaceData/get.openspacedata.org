@@ -186,7 +186,7 @@
         <a
           out:fade|local={{duration: 50}}
           in:fade|local={{delay: 50}}
-          class="button"
+          class="button formButton"
           on:click|preventDefault={() => {
             checkForm()
             if (!disableButton) {

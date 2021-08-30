@@ -133,8 +133,8 @@
 
 <div class="guide">
   {#if status === 200 && api && api.machine_name}
-    <button class:cantCopy class="copyURL" data-shadow on:click={() => copyToClipboard()}
-      >Share results</button>
+    <!--<button class:cantCopy class="copyURL" data-shadow on:click={() => copyToClipboard()}
+      >Share results</button>-->
   {/if}
   <div class="wrapper flow">
     {#if status === 200 && api && api.machine_name}
@@ -175,10 +175,10 @@
               </ul>
             {/await}
           </div>
-          <div class="content">
+          <!--<div class="content">
             <h3>Why I have to download multiple files?</h3>
             <p>Good question! Here comes the answer. Lorem ipsum...</p>
-          </div>
+          </div>-->
         </section>
         <section>
           <NumberedHeading step="2" text="Process the images" />
@@ -191,6 +191,11 @@
           {#if guide}
             {@html guide.content.interpret[0]}
           {/if}
+        </section>
+        <section class="shareSection">
+          <h2>Want to share this with friends and colleagues? Share your data and this guide:</h2>
+          <button class:cantCopy class="copyURL" data-shadow on:click={() => copyToClipboard()}
+            >Click to copy the URL to this guide</button>
         </section>
       {/await}
     {:else}
@@ -244,8 +249,11 @@
     --toastWidth: 100%;
   }
 
+  section.shareSection {
+    margin: 2rem auto 2rem 140px;
+  }
+
   .copyURL {
-    position: absolute;
     cursor: pointer;
     left: auto;
     right: var(--size-400);
@@ -253,9 +261,8 @@
     background: var(--color-primary);
     font-family: 'nowayregular', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #fff;
-    padding: 20px 16px;
-    font-size: 21px;
-    margin: 2rem auto 2rem 0;
+    padding: 16px 12px;
+    font-size: 16px;
     border: none;
     border-bottom: 2px solid #000;
     text-shadow: none;

@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-  <title>OpenSpaceData</title>
+  <title>OpenSpaceData | Help</title>
 </svelte:head>
 
 <Header />
