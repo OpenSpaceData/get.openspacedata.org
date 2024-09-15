@@ -93,7 +93,7 @@ Cool, we have raster data. But why do you have multiple files of the same locati
   <summary>How does the NDSI indicator work?</summary>
     <p>The Normalized Difference Snow Index (NDSI) is derived from the green and short wave infrared bands. This formula shows snow cover over land areas.</p>
     <p>Since snow absorbs most of the incident radiation in the SWIR while clouds do not, this enables NDSI to distinguish snow from clouds. This formula is commonly used in snow/ice cover mapping application as well as glacier monitoring.</p>
-    <p>A value of NDSI &gt; 0.0 is considered to have some snow present. A value with NDSI &lt;= 0.0 is a snow-free land surface.</p>
+    <p>A value of NDSI > 0.0 is considered to have some snow present. A value with NDSI <= 0.0 is a snow-free land surface.</p>
 </details>
 
 Enough dry theory. Now it's down to the nitty-gritty.
